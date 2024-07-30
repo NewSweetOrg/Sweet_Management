@@ -10,6 +10,7 @@ public class UserStuff {
     @Given("I am on the sign-up step")
     public void i_am_on_the_sign_up_step() {
         // Write code here that turns the phrase above into concrete actions
+        //tst
         //throw new io.cucumber.java.PendingException();
     }
     @When("when the user enters a username {string} and password {string}")
