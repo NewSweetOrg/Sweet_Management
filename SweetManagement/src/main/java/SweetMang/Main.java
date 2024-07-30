@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // إنشاء خدمات
+       
         ContentService contentService = new ContentService();
         FeedbackService feedbackService = new FeedbackService();
         Scanner scanner = new Scanner(System.in);
@@ -93,8 +93,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // إنشاء خدمات
-        ContentService contentService = new ContentService();
+     ContentService contentService = new ContentService();
         FeedbackService feedbackService = new FeedbackService();
         Scanner scanner = new Scanner(System.in);
 
