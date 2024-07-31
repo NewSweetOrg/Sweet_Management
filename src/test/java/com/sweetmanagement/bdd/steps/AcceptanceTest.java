@@ -7,11 +7,11 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "user_stories",
-        plugin = { "summary", "html:target/cucumber/wikipedia.html"},
+        features = "Features",
+        plugin = { "html:target/cucumber/wikipedia.html"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE,
-        glue = {"com.sweet"}
+        glue = {"com.sweetmanagement.bdd.steps"}
 )
 public class AcceptanceTest {
 }
