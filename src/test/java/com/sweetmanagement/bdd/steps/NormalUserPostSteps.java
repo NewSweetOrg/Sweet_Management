@@ -55,4 +55,17 @@ public class NormalUserPostSteps {
             assertEquals(title, post.getTitle());
         }
     }
+
+    @When("I search for posts with tag {string}")
+    public void iSearchForPostsWithTag(String tag) {
+        searchResults = postService.searchPostsByTag(tag);
+    }
+
+    @Then("I should see all the posts with the tag {string}")
+    public void iShouldSeeAllThePostsWithTheTag(String tag) {
+        assertNotNull(searchResults);
+        for (Posts post : searchResults) {
+            assertEquals(tag, post.getTag());
+        }
+    }
 }

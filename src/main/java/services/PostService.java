@@ -24,4 +24,14 @@ public class PostService {
         }
         return results;
     }
+
+    public List<Posts> searchPostsByTag(String tag) {
+        List<Posts> results = new LinkedList<>();
+        for (Posts post : posts) {
+            if (post.getTag().equalsIgnoreCase(tag)) {
+                results.add(post);
+            }
+        }
+        return results;
+    }
 }
