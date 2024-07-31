@@ -1,4 +1,4 @@
-package com.sweet;
+package com.sweetmanagement.bdd.steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

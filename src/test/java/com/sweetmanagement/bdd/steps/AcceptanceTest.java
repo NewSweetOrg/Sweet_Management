@@ -1,4 +1,4 @@
-package com.sweet;
+package com.sweetmanagement.bdd.steps;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

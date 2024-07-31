@@ -1,4 +1,4 @@
-package com.sweet;
+package SweetMang;
 
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
