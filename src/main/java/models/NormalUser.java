@@ -1,6 +1,8 @@
 package models;
 
 import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class NormalUser extends GeneralUser {
     private int id;
@@ -8,6 +10,7 @@ public class NormalUser extends GeneralUser {
     private String phone;
     private String city;
     private LinkedList<String> message;
+    private List<Posts> posts; // List to store dessert posts
 
     public NormalUser(String username, String password, String role, int id, String name, String phone, String city) {
         super(username, password, role);
@@ -16,6 +19,7 @@ public class NormalUser extends GeneralUser {
         this.phone = phone;
         this.city = city;
         this.message = new LinkedList<>();
+        this.posts = new LinkedList<>();
     }
 
     public int getId() {
@@ -58,6 +62,22 @@ public class NormalUser extends GeneralUser {
         this.message = message;
     }
 
+    public List<Posts> getPosts() {
+        return posts;
+    }
+
+    public void addPost(Posts post) {
+        posts.add(post);
+    }
+
+    public List<Posts> searchPostsByTitle(String title) {
+        return posts.stream().filter(post -> post.getTitle().equalsIgnoreCase(title)).collect(Collectors.toList());
+    }
+
+    public List<Posts> searchPostsByTag(String tag) {
+        return posts.stream().filter(post -> post.getTag().equalsIgnoreCase(tag)).collect(Collectors.toList());
+    }
+
     @Override
     public String toString() {
         return "NormalUser{" +
@@ -66,6 +86,7 @@ public class NormalUser extends GeneralUser {
                 ", phone='" + phone + '\'' +
                 ", city='" + city + '\'' +
                 ", message=" + message +
+                ", posts=" + posts +
                 ", " + super.toString() +
                 '}';
     }
