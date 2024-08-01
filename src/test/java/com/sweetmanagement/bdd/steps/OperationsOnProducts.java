@@ -3,12 +3,28 @@ package com.sweetmanagement.bdd.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+import models.NormalUser;
+import services.NormalUserService;
+import models.Store;
 public class OperationsOnProducts {
+
+    private NormalUserService userService;
+    private Store loggedInStoreOwner;
+
+
+    public OperationsOnProducts() {
+        this.userService = new NormalUserService();
+        // Simulating a sign-in process for demonstration purposes
+        userService.signUp("storeOwner", "password", "store owner");
+        if (userService.signIn("storeOwner", "password")) {
+            this.loggedInStoreOwner = new Store("storeOwner123", "password", "store owner", 1, "Sweet Treats", 1234567890, "123 Candy Lane", 0);
+        }
+    }
     @Given("the store owner is logged in")
     public void theStoreOwnerIsLoggedIn() {
-        // Write code here that turns the phrase above into concrete actions
-
+        if (loggedInStoreOwner == null || !"store owner".equalsIgnoreCase(loggedInStoreOwner.getRole())) {
+            throw new RuntimeException("Store owner is not logged in.");
+        }
     }
     @When("the store owner adds a new product")
     public void theStoreOwnerAddsANewProduct() {
