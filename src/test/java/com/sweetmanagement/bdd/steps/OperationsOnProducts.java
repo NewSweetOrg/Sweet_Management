@@ -1,5 +1,4 @@
 package com.sweetmanagement.bdd.steps;
-import static org.junit.Assert.*;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,7 +12,7 @@ import services.NormalUserService;
 import services.ProductService;
 import services.StoreService;
 
-import java.math.BigDecimal;
+import static org.junit.Assert.*;
 import java.util.List;
 
 
@@ -24,9 +23,6 @@ public class OperationsOnProducts {
     private Store loggedInStoreOwner;
     private ProductService productService;
 
-
-
-
     public OperationsOnProducts() {
 
          this.userService = new NormalUserService();
@@ -36,7 +32,6 @@ public class OperationsOnProducts {
                  1, "Sweet Treats", 1234567890, "123 Candy Lane", 0);
 
         storeService.addStore(loggedInStoreOwner);
-        // Simulating a sign-in process for demonstration purposes
         userService.signUp("storeOwner", "password", "store owner");
         if (userService.signIn("storeOwner", "password")) {
             this.loggedInStoreOwner = new Store("storeOwner123", "password","store owner",

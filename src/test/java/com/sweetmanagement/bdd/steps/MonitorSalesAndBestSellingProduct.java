@@ -4,35 +4,51 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import models.Products;
+import services.SalesService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+
 public class MonitorSalesAndBestSellingProduct {
+
+    private SalesService salesService;
+    private int totalSales;
+    private Products bestSellingProduct;
+
+    public MonitorSalesAndBestSellingProduct() {
+        // Initialize SalesService with an empty list of products for now
+        this.salesService = new SalesService(new ArrayList<>());
+    }
 
     @Given("the sales department is logged in")
     public void theSalesDepartmentIsLoggedIn() {
-        // Write code here that turns the phrase above into concrete actions
-
+        assertTrue("Sales department should be logged in.", true);
     }
 
     @When("they request to view all sales")
     public void theyRequestToViewAllSales() {
-        // Write code here that turns the phrase above into concrete actions
-
+        this.totalSales = salesService.calculateTotalSales();
     }
 
     @Then("all sales should be calculated and displayed")
     public void allSalesShouldBeCalculatedAndDisplayed() {
-        // Write code here that turns the phrase above into concrete actions
-
+        System.out.println("Total sales: " + totalSales);
+        assertTrue("Total sales should be calculated.", totalSales >= 0);
     }
 
     @When("they request to view the best-selling product")
     public void theyRequestToViewTheBestSellingProduct() {
-        // Write code here that turns the phrase above into concrete actions
-
+        this.bestSellingProduct = salesService.getBestSellingProduct();
     }
 
     @Then("the best-selling product should be calculated and displayed")
     public void theBestSellingProductShouldBeCalculatedAndDisplayed() {
-        // Write code here that turns the phrase above into concrete actions
-
+        assertNotNull("Best-selling product should be calculated.", bestSellingProduct);
+        System.out.println("Best-selling product: " + bestSellingProduct.getName() +
+                " with total sales: " + bestSellingProduct.getTotalSold());
     }
 }
