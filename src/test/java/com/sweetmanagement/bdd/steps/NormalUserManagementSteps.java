@@ -4,6 +4,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import models.NormalUser;
+import models.Store;
+
 
 import static org.junit.Assert.*;
 

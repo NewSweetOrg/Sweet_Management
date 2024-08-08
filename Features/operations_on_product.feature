@@ -16,7 +16,7 @@ Feature:Product Management
 
   Scenario: Remove a product
     Given the store owner is logged in
-    And the product with ID "123" exists
+    And the product with id "123" exists
     When the store owner removes the product with ID "123"
     Then the product should be removed successfully
     And All the products will be displayed

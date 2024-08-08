@@ -3,6 +3,8 @@ package services;
 import models.Products;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Iterator;
+
 
 public class ProductService {
     private List<Products> products = new LinkedList<>();
@@ -28,5 +30,25 @@ public class ProductService {
             }
         }
         return results;
+    }
+
+    public void updateProduct(int id, Products updatedProduct) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getId() == id) {
+                products.set(i, updatedProduct);
+                break;
+            }
+        }
+    }
+
+    public void removeProduct(int id) {
+        Iterator<Products> iterator = products.iterator();
+        while (iterator.hasNext()) {
+            Products product = iterator.next();
+            if (product.getId() == id) {
+                iterator.remove();  // Remove the product when it is found
+                break;
+            }
+        }
     }
 }

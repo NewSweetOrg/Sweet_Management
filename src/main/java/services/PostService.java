@@ -5,6 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PostService {
+
+    // Each instacne will have its own storage (map)
+    // so either make this service a singleton
+    // or make this field static so that all instances use the same storage
     private List<Posts> posts = new LinkedList<>();
 
     public void addPost(Posts post) {

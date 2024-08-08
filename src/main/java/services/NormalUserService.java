@@ -12,7 +12,10 @@ public class NormalUserService {
         if (users.containsKey(username)) {
             return false; // User already exists
         }
-        NormalUser user = new NormalUser(username, password, role, users.size() + 1, "", "", "");
+        // users.size() will probably cause a bug for example if some users are deleted
+        //also its not even necessary use the username as an id since its unique
+        //so use this (username.hashCode()),instead of previous form
+        NormalUser user = new NormalUser(username, password, role, users.size()+1, "", "", "");
         users.put(username, user);
         return true;
     }
