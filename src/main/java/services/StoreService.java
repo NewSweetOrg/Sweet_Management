@@ -19,4 +19,13 @@ public class StoreService {
         }
         return null;
     }
+
+    public void updateStore(int id, String name, String number, String address) {
+        Store store = getStoreById(id);
+        if (store != null) {
+            store.setName(name);
+            store.setPhone(Integer.parseInt(number)); // Assuming phone number is stored as an int
+            store.setAddress(address);
+        }
+    }
 }
