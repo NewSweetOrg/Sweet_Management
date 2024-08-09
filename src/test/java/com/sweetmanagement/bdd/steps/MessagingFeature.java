@@ -13,8 +13,8 @@ public class MessagingFeature {
 
     private MessagingService messagingService;
     private String loggedInUser;
-    private String availableSupplier;
-    private String availableStoreOwner;
+    private String availableSupplier= "supplier123";
+    private String availableStoreOwner= "storeOwner123";
     private String message;
 
     public MessagingFeature() {
@@ -25,18 +25,6 @@ public class MessagingFeature {
     public void aUserIsLoggedIn() {
         loggedInUser = "user123"; // Simulate a user logging in
         assertNotNull("User should be logged in.", loggedInUser);
-    }
-
-    @Given("a supplier is available")
-    public void aSupplierIsAvailable() {
-        availableSupplier = "supplier123"; // Simulate an available supplier
-        assertNotNull("Supplier should be available.", availableSupplier);
-    }
-
-    @Given("a store owner is available")
-    public void aStoreOwnerIsAvailable() {
-        availableStoreOwner = "storeOwner123"; // Simulate an available store owner
-        assertNotNull("Store owner should be available.", availableStoreOwner);
     }
 
     @When("the user sends a message to the store owner with content {string}")
@@ -62,10 +50,6 @@ public class MessagingFeature {
         assertTrue("Message should be delivered to the supplier.",
                 messagingService.getMessagesForSupplier(availableSupplier).contains(message));
     }
-
-
-
-
 
 
 
