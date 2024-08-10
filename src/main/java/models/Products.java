@@ -44,6 +44,9 @@ public class Products {
     }
 
     public int getPrice() {
+        if(totalSold > 100){
+            return (int) (price*0.80);
+        }
         return price;
     }
 
@@ -58,6 +61,7 @@ public class Products {
     public void setTotalSold(int totalSold) {
         this.totalSold = totalSold;
     }
+
 
     public LinkedList<String> getFeedback() {
         return feedback;
