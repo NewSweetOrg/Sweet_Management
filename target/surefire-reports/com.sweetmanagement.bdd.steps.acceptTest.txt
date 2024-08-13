@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: com.sweetmanagement.bdd.steps.acceptTest
+-------------------------------------------------------------------------------
+Tests run: 28, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 1.956 s <<< FAILURE! - in com.sweetmanagement.bdd.steps.acceptTest
+Update Store owner account details(Account Management)  Time elapsed: 0.033 s  <<< FAILURE!
+org.junit.ComparisonFailure: Name should be updated. expected:<[New Store Name]> but was:<[Sweet Treats]>
+
+Update Supplier account details(Account Management)  Time elapsed: 0.02 s  <<< FAILURE!
+org.junit.ComparisonFailure: Name should be updated. expected:<[Updated Supplier Name]> but was:<[Sweet Supplier]>
+
+Monitor profits and generate financial reports(Monitor and Report)  Time elapsed: 0.02 s  <<< FAILURE!
+java.lang.AssertionError: expected:<3000.0> but was:<0.0>
+
+Identify best-selling products in each store(Monitor and Report)  Time elapsed: 0.028 s  <<< FAILURE!
+java.lang.AssertionError
+
+update an existing product(Product Management)  Time elapsed: 0.092 s  <<< FAILURE!
+java.lang.AssertionError: Product with ID 123 should exist.
+
+Remove a product(Product Management)  Time elapsed: 0.03 s  <<< FAILURE!
+java.lang.AssertionError: Product with ID 123 should exist.
+

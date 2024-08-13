@@ -1,0 +1,12 @@
+com\sweetmanagement\bdd\steps\PurchaseDessertSteps.class
+com\sweetmanagement\bdd\steps\NormalUserManagementSteps.class
+com\sweetmanagement\bdd\steps\OperationsOnProducts.class
+com\sweetmanagement\bdd\steps\NormalUserPostSteps.class
+com\sweetmanagement\bdd\steps\MonitorAndReportSteps.class
+com\sweetmanagement\bdd\steps\acceptTest.class
+com\sweetmanagement\bdd\steps\ManageAccountDetails.class
+com\sweetmanagement\bdd\steps\UserManagementSteps.class
+com\sweetmanagement\bdd\steps\GatherStatisticsByCitySteps.class
+com\sweetmanagement\bdd\steps\MessagingFeature.class
+com\sweetmanagement\bdd\steps\ContentManagementSteps.class
+com\sweetmanagement\bdd\steps\MonitorSalesAndBestSellingProduct.class

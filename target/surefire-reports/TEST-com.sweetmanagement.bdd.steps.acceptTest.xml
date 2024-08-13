@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.sweetmanagement.bdd.steps.acceptTest" time="1.956" tests="28" errors="0" skipped="0" failures="6">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\amrh3\eclipse-workspace\SweetManagement\target\test-classes;C:\Users\amrh3\eclipse-workspace\SweetManagement\target\classes;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-java\6.10.4\cucumber-java-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-core\6.10.4\cucumber-core-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-gherkin\6.10.4\cucumber-gherkin-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-gherkin-messages\6.10.4\cucumber-gherkin-messages-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\messages\15.0.0\messages-15.0.0.jar;C:\Users\amrh3\.m2\repository\io\cucumber\tag-expressions\3.0.1\tag-expressions-3.0.1.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-expressions\10.3.0\cucumber-expressions-10.3.0.jar;C:\Users\amrh3\.m2\repository\io\cucumber\datatable\3.5.0\datatable-3.5.0.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-plugin\6.10.4\cucumber-plugin-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\docstring\6.10.4\docstring-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\html-formatter\13.0.0\html-formatter-13.0.0.jar;C:\Users\amrh3\.m2\repository\io\cucumber\create-meta\4.0.0\create-meta-4.0.0.jar;C:\Users\amrh3\.m2\repository\org\apiguardian\apiguardian-api\1.1.1\apiguardian-api-1.1.1.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-junit\6.10.4\cucumber-junit-6.10.4.jar;C:\Users\amrh3\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\amrh3\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Asia/Jerusalem"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Users\amrh3\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre\bin"/>
+    <property name="sun.java.command" value="C:\Users\amrh3\AppData\Local\Temp\surefire10191625761160874479\surefirebooter4557618255102192501.jar C:\Users\amrh3\AppData\Local\Temp\surefire10191625761160874479 2024-08-10T01-27-08_561-jvmRun1 surefire5774017204420843814tmp surefire_02973263994506567804tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\amrh3\eclipse-workspace\SweetManagement\target\test-classes;C:\Users\amrh3\eclipse-workspace\SweetManagement\target\classes;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-java\6.10.4\cucumber-java-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-core\6.10.4\cucumber-core-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-gherkin\6.10.4\cucumber-gherkin-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-gherkin-messages\6.10.4\cucumber-gherkin-messages-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\messages\15.0.0\messages-15.0.0.jar;C:\Users\amrh3\.m2\repository\io\cucumber\tag-expressions\3.0.1\tag-expressions-3.0.1.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-expressions\10.3.0\cucumber-expressions-10.3.0.jar;C:\Users\amrh3\.m2\repository\io\cucumber\datatable\3.5.0\datatable-3.5.0.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-plugin\6.10.4\cucumber-plugin-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\docstring\6.10.4\docstring-6.10.4.jar;C:\Users\amrh3\.m2\repository\io\cucumber\html-formatter\13.0.0\html-formatter-13.0.0.jar;C:\Users\amrh3\.m2\repository\io\cucumber\create-meta\4.0.0\create-meta-4.0.0.jar;C:\Users\amrh3\.m2\repository\org\apiguardian\apiguardian-api\1.1.1\apiguardian-api-1.1.1.jar;C:\Users\amrh3\.m2\repository\io\cucumber\cucumber-junit\6.10.4\cucumber-junit-6.10.4.jar;C:\Users\amrh3\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\amrh3\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\amrh3"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-10-17"/>
+    <property name="java.home" value="C:\Users\amrh3\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre"/>
+    <property name="file.separator" value="\"/>
+    <property name="style.color" value="always"/>
+    <property name="basedir" value="C:\Users\amrh3\eclipse-workspace\SweetManagement"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\amrh3\AppData\Local\Temp\surefire10191625761160874479\surefirebooter4557618255102192501.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.9+9"/>
+    <property name="user.name" value="amrh3"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-17.0.9+9"/>
+    <property name="localRepository" value="C:\Users\amrh3\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\amrh3\AppData\Local\Temp\"/>
+    <property name="java.version" value="17.0.9"/>
+    <property name="user.dir" value="C:\Users\amrh3\eclipse-workspace\SweetManagement"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\amrh3\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.9.v20231028-0858\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Users/amrh3/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.2.v20240123-0840/jre/bin/server;C:/Users/amrh3/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.2.v20240123-0840/jre/bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\Program Files\Microsoft MPI\Bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\opencv\build\x64\vc15\bin;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin\;C:\Program Files\IVI Foundation\VISA\Win64\Bin\;C:\Program Files (x86)\IVI Foundation\VISA\WinNT\Bin;C:\Users\amrh3\AppData\Local\Programs\Python\Launcher\;C:\opencv\build\x64\vc15\bin;C:\Users\amrh3\AppData\Local\Microsoft\WindowsApps;C:\Users\amrh3\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\amrh3\AppData\Local\GitHubDesktop\bin;C:\Users\amrh3\AppData\Roaming\npm;C:\Program Files\Azure Data Studio\bin;C:\Users\amrh3\.dotnet\tools;C:\Users\amrh3\OneDrive\Desktop;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="17.0.9+9"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="View posts" classname="Posts and Feedback Management" time="0.347"/>
+  <testcase name="Delete a post" classname="Posts and Feedback Management" time="0.029"/>
+  <testcase name="View feedback" classname="Posts and Feedback Management" time="0.018"/>
+  <testcase name="Delete feedback" classname="Posts and Feedback Management" time="0.03"/>
+  <testcase name="Display number of registered users by city" classname="Gather and display statistics on registered users by City" time="0.018"/>
+  <testcase name="Update Store owner account details" classname="Account Management" time="0.033">
+    <failure message="Name should be updated. expected:&lt;[New Store Name]&gt; but was:&lt;[Sweet Treats]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: Name should be updated. expected:<[New Store Name]> but was:<[Sweet Treats]>
+]]></failure>
+  </testcase>
+  <testcase name="Update Supplier account details" classname="Account Management" time="0.02">
+    <failure message="Name should be updated. expected:&lt;[Updated Supplier Name]&gt; but was:&lt;[Sweet Supplier]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: Name should be updated. expected:<[Updated Supplier Name]> but was:<[Sweet Supplier]>
+]]></failure>
+  </testcase>
+  <testcase name="Messaging between users and suppliers" classname="Messaging feature" time="0.028"/>
+  <testcase name="Messaging between users and store" classname="Messaging feature" time="0.02"/>
+  <testcase name="Messaging between store and suppliers" classname="Messaging feature" time="0.015"/>
+  <testcase name="Display all sales" classname="Monitor Sales and best selling" time="0.017"/>
+  <testcase name="Display best-selling product" classname="Monitor Sales and best selling" time="0.017"/>
+  <testcase name="Monitor profits and generate financial reports" classname="Monitor and Report" time="0.02">
+    <failure message="expected:&lt;3000.0&gt; but was:&lt;0.0&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: expected:<3000.0> but was:<0.0>
+]]></failure>
+  </testcase>
+  <testcase name="Identify best-selling products in each store" classname="Monitor and Report" time="0.028">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+</failure>
+  </testcase>
+  <testcase name="Sign up for a new account" classname="Normal User Management" time="0.023"/>
+  <testcase name="Sign in to the platform" classname="Normal User Management" time="0.035"/>
+  <testcase name="Manage personal account" classname="Normal User Management" time="0.02"/>
+  <testcase name="Post personal dessert creations" classname="Normal User Post" time="0.022"/>
+  <testcase name="Search for dessert posts by title" classname="Normal User Post" time="0.017"/>
+  <testcase name="Search for dessert posts by tag" classname="Normal User Post" time="0.016"/>
+  <testcase name="Add a new product" classname="Product Management" time="0.022"/>
+  <testcase name="update an existing product" classname="Product Management" time="0.092">
+    <failure message="Product with ID 123 should exist." type="java.lang.AssertionError">java.lang.AssertionError: Product with ID 123 should exist.
+</failure>
+  </testcase>
+  <testcase name="Remove a product" classname="Product Management" time="0.03">
+    <failure message="Product with ID 123 should exist." type="java.lang.AssertionError">java.lang.AssertionError: Product with ID 123 should exist.
+</failure>
+  </testcase>
+  <testcase name="Purchase desserts directly from store owners" classname="Purchase Desserts" time="0.022"/>
+  <testcase name="Add a new store owner" classname="User Management" time="0.026"/>
+  <testcase name="Add a new raw material supplier" classname="User Management" time="0.044"/>
+  <testcase name="Remove an existing store owner" classname="User Management" time="0.073"/>
+  <testcase name="Remove an existing raw material supplier" classname="User Management" time="0.07"/>
+</testsuite>
