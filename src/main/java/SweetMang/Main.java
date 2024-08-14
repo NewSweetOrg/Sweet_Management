@@ -112,7 +112,7 @@ public class Main {
                 System.out.println("4. NormalUser");
                 System.out.print("Enter the number corresponding to your role: ");
                 int loginRoleChoice = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine(); // Consume  newline
                 
                 String loginRole = "";
                 switch (loginRoleChoice) {
