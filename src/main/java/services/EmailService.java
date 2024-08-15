@@ -1,10 +1,15 @@
 package services;
 
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class EmailService {
+
+    private static final Logger LOGGER = Logger.getLogger(EmailService.class.getName());
+
     public static void sendEmail(String recipient, String subject, String content) {
         final String fromEmail = System.getenv("EMAIL_USERNAME"); // Retrieve from environment variables
         final String password = System.getenv("EMAIL_PASSWORD"); // Retrieve from environment variables
@@ -33,10 +38,9 @@ public class EmailService {
             message.setSubject(subject);
             message.setText(content);
             Transport.send(message);
-            System.out.println("Email sent successfully to " + recipient);
+            LOGGER.info("Email sent successfully to " + recipient);
         } catch (MessagingException e) {
-            e.printStackTrace();
-            System.out.println("Failed to send email: " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Failed to send email", e);
         }
     }
 }
