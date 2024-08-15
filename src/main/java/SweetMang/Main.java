@@ -6,7 +6,6 @@ import services.*;
 import java.util.*;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Main {
@@ -390,7 +389,7 @@ public class Main {
             for (Products product : productList) {
                 if (product.getStoreId() == store.getId()) {
                     totalSales += product.getPrice() * product.getTotalSold();
-                    totalProfit += (product.getPrice() - product.getPrice()) * product.getTotalSold();
+                    totalProfit += product.getPrice() * product.getTotalSold();
                 }
             }
             LOGGER.info("Store: " + store.getName());
