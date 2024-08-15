@@ -26,12 +26,16 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-    <groupId>com.sun.mail</groupId>
-    <artifactId>javax.mail</artifactId>
-    <version>1.6.2</version>
-</dependency>
-
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <sonar.organization>newsweetorg</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    </properties>
 
     <build>
         <plugins>
@@ -61,7 +65,9 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
+
     </build>
+
+
 </project>
