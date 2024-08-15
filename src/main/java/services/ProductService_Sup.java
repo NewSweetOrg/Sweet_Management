@@ -2,7 +2,7 @@ package services;
 
 import models.Products_Sup;
 
- 
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,16 +31,6 @@ public class ProductService_Sup {
         return null;
     }
 
-    public List<Products_Sup> getProducts_SupFromStores(StoreService storeService) {
-        List<Products_Sup> results = new LinkedList<>();
-        for (Products_Sup product : Products_Sup) {
-            if (storeService.getStoreById(product.getStoreOrSupplierId()) != null) {
-                results.add(product);
-            }
-        }
-        return results;
-    }
-
     public void updateProduct(int id, Products_Sup updatedProduct) {
         for (int i = 0; i < Products_Sup.size(); i++) {
             if (Products_Sup.get(i).getId() == id) {
@@ -64,7 +54,5 @@ public class ProductService_Sup {
         Products_Sup.removeIf(product -> product.getId() == id);
     }
 
- 
 
- 
 }

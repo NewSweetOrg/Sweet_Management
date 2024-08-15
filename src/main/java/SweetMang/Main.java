@@ -10,166 +10,167 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+
 public class Main {
-    private static NormalUser user; 
-    
+    private static NormalUser user;
+
     private static ProductService productService = new ProductService();
     private static ProductService_Sup ProductService_Sup = new ProductService_Sup();
- 
-    private static int fID;  
- 
+
+    private static int fID;
+
     private static List<NormalUser> userList = new ArrayList<>();
     private static List<Store> storeList = new ArrayList<>();
     private static List<Supplier> supplierList = new ArrayList<>();
     private static List<Products> productList = new ArrayList<>();
     private static List<Feedback> feedbackList = new ArrayList<>();
     private static Map<Integer, List<Message>> messageBox = new HashMap<>();
-   
- 
-  public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
 
-    while (true) {
-        // Step 1: Choose to log in or create an account
-        System.out.println("Welcome to the Sweet Management System!");
-        System.out.println("1. Log in");
-        System.out.println("2. Create an account");
-        System.out.println("3. Exit");
-        System.out.print("Choose an option (1, 2, or 3): ");
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
 
-        if (choice == 3) {
-            System.out.println("Thank you for using the Sweet Management System. Goodbye!");
-            break;
-        }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        if (choice == 2) {
-            // Step 2: Account Creation
-            System.out.println("Create an account:");
-            
-            System.out.print("Enter your name: ");
-            String name = scanner.nextLine();
-            
-            System.out.print("Enter your password: ");
-            String password = scanner.nextLine();
-            
-            System.out.print("Enter your city: ");
-            String city = scanner.nextLine();
-            
-            System.out.print("Enter your phone number: ");
-            String phone = scanner.nextLine();
-         
-            System.out.println("Select your role:");
-            System.out.println("1. Admin");
-            System.out.println("2. StoreOwner");
-            System.out.println("3. Supplier");
-            System.out.println("4. NormalUser");
-            System.out.print("Enter the number corresponding to your role: ");
-            int roleChoice = scanner.nextInt();
+        while (true) {
+            // Step 1: Choose to log in or create an account
+            System.out.println("Welcome to the Sweet Management System!");
+            System.out.println("1. Log in");
+            System.out.println("2. Create an account");
+            System.out.println("3. Exit");
+            System.out.print("Choose an option (1, 2, or 3): ");
+            int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
-            
-            String role = "";
-            switch (roleChoice) {
-                case 1:
-                    role = "Admin";
-                    break;
-                case 2:
-                    role = "StoreOwner";
-                    break;
-                case 3:
-                    role = "Supplier";
-                    break;
-                case 4:
-                    role = "NormalUser";
-                    break;
-                default:
-                    System.out.println("Invalid role choice.");
-                    continue;
-            }
-            
-            NormalUser newUser = new NormalUser(userList.size(), name, password, city, phone,  role);
-            userList.add(newUser);
-            System.out.println("\nAccount created successfully!");
-        }
 
-        if (choice == 1 || choice == 2) {
-            // Step 3: Login
-            boolean loginSuccess = false;
-            
-            while (!loginSuccess) {
-                System.out.println("\nPlease log in.");
+            if (choice == 3) {
+                System.out.println("Thank you for using the Sweet Management System. Goodbye!");
+                break;
+            }
+
+            if (choice == 2) {
+                // Step 2: Account Creation
+                System.out.println("Create an account:");
+
                 System.out.print("Enter your name: ");
-                String loginName = scanner.nextLine();
-                
+                String name = scanner.nextLine();
+
                 System.out.print("Enter your password: ");
-                String loginPassword = scanner.nextLine();
-                
+                String password = scanner.nextLine();
+
+                System.out.print("Enter your city: ");
+                String city = scanner.nextLine();
+
+                System.out.print("Enter your phone number: ");
+                String phone = scanner.nextLine();
+
                 System.out.println("Select your role:");
                 System.out.println("1. Admin");
                 System.out.println("2. StoreOwner");
                 System.out.println("3. Supplier");
                 System.out.println("4. NormalUser");
                 System.out.print("Enter the number corresponding to your role: ");
-                int loginRoleChoice = scanner.nextInt();
-                scanner.nextLine(); // Consume  newline
-                
-                String loginRole = "";
-                switch (loginRoleChoice) {
+                int roleChoice = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+
+                String role = "";
+                switch (roleChoice) {
                     case 1:
-                        loginRole = "Admin";
+                        role = "Admin";
                         break;
                     case 2:
-                        loginRole = "StoreOwner";
+                        role = "StoreOwner";
                         break;
                     case 3:
-                        loginRole = "Supplier";
+                        role = "Supplier";
                         break;
                     case 4:
-                        loginRole = "NormalUser";
+                        role = "NormalUser";
                         break;
                     default:
                         System.out.println("Invalid role choice.");
                         continue;
                 }
 
-                // Verify login details
-                for (NormalUser u : userList) {
-                    if (loginName.equals(u.getName()) && loginPassword.equals(u.getPassword()) && loginRole.equals(u.getRole())) {
-                        loginSuccess = true;
-                        user = u; // Set the current user
-                        System.out.println("Login successful!");
+                NormalUser newUser = new NormalUser(userList.size(), name, password, city, phone, role);
+                userList.add(newUser);
+                System.out.println("\nAccount created successfully!");
+            }
 
-                        // Direct the user based on their role
-                        switch (loginRole.toLowerCase()) {
-                            case "admin":
-                                adminDashboard();
-                                break;
-                            case "storeowner":
-                                storeOwnerDashboard();
-                                break;
-                            case "supplier":
-                                supplierDashboard();
-                                break;
-                            case "normaluser":
-                                normalUserDashboard(user);
-                                break;
-                        }
-                        break; // Exit the for loop once a match is found
+            if (choice == 1 || choice == 2) {
+                // Step 3: Login
+                boolean loginSuccess = false;
+
+                while (!loginSuccess) {
+                    System.out.println("\nPlease log in.");
+                    System.out.print("Enter your name: ");
+                    String loginName = scanner.nextLine();
+
+                    System.out.print("Enter your password: ");
+                    String loginPassword = scanner.nextLine();
+
+                    System.out.println("Select your role:");
+                    System.out.println("1. Admin");
+                    System.out.println("2. StoreOwner");
+                    System.out.println("3. Supplier");
+                    System.out.println("4. NormalUser");
+                    System.out.print("Enter the number corresponding to your role: ");
+                    int loginRoleChoice = scanner.nextInt();
+                    scanner.nextLine(); // Consume  newline
+
+                    String loginRole = "";
+                    switch (loginRoleChoice) {
+                        case 1:
+                            loginRole = "Admin";
+                            break;
+                        case 2:
+                            loginRole = "StoreOwner";
+                            break;
+                        case 3:
+                            loginRole = "Supplier";
+                            break;
+                        case 4:
+                            loginRole = "NormalUser";
+                            break;
+                        default:
+                            System.out.println("Invalid role choice.");
+                            continue;
                     }
-                }
-                
-                if (!loginSuccess) {
-                    System.out.println("Invalid login details. Please try again.");
+
+                    // Verify login details
+                    for (NormalUser u : userList) {
+                        if (loginName.equals(u.getName()) && loginPassword.equals(u.getPassword()) && loginRole.equals(u.getRole())) {
+                            loginSuccess = true;
+                            user = u; // Set the current user
+                            System.out.println("Login successful!");
+
+                            // Direct the user based on their role
+                            switch (loginRole.toLowerCase()) {
+                                case "admin":
+                                    adminDashboard();
+                                    break;
+                                case "storeowner":
+                                    storeOwnerDashboard();
+                                    break;
+                                case "supplier":
+                                    supplierDashboard();
+                                    break;
+                                case "normaluser":
+                                    normalUserDashboard(user);
+                                    break;
+                            }
+                            break; // Exit the for loop once a match is found
+                        }
+                    }
+
+                    if (!loginSuccess) {
+                        System.out.println("Invalid login details. Please try again.");
+                    }
                 }
             }
         }
+
+        scanner.close();
     }
 
-    scanner.close();
-}  
-  
-  public static void adminDashboard() {
+    public static void adminDashboard() {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
@@ -190,7 +191,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                	manageUsersadmin();
+                    manageUsersadmin();
                     break;
                 case 2:
                     generateFinancialReports();
@@ -262,34 +263,44 @@ public class Main {
     private static void addUser() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Add New User");
-        
+
         System.out.print("Enter name: ");
         String name = scanner.nextLine();
-        
+
         System.out.print("Enter password: ");
         String password = scanner.nextLine();
-        
+
         System.out.print("Enter city: ");
         String city = scanner.nextLine();
-        
+
         System.out.print("Enter phone: ");
         String phone = scanner.nextLine();
-     
-        
+
+
         System.out.println("Select role (1. Admin, 2. StoreOwner, 3. Supplier, 4. NormalUser): ");
         int roleChoice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
-        
+
         String role = "";
         switch (roleChoice) {
-            case 1: role = "Admin"; break;
-            case 2: role = "StoreOwner"; break;
-            case 3: role = "Supplier"; break;
-            case 4: role = "NormalUser"; break;
-            default: System.out.println("Invalid role. Setting as NormalUser."); role = "NormalUser";
+            case 1:
+                role = "Admin";
+                break;
+            case 2:
+                role = "StoreOwner";
+                break;
+            case 3:
+                role = "Supplier";
+                break;
+            case 4:
+                role = "NormalUser";
+                break;
+            default:
+                System.out.println("Invalid role. Setting as NormalUser.");
+                role = "NormalUser";
         }
-        
-        NormalUser newUser = new NormalUser(userList.size(), name, password, city, phone,  role);
+
+        NormalUser newUser = new NormalUser(userList.size(), name, password, city, phone, role);
         userList.add(newUser);
         System.out.println("User added successfully.");
     }
@@ -360,7 +371,7 @@ public class Main {
 
     private static void generateFinancialReports() {
         System.out.println("Financial Reports");
-        
+
         // Report for Stores
         System.out.println("Store Reports:");
         for (Store store : storeList) {
@@ -403,7 +414,7 @@ public class Main {
         System.out.println("Top 5 Best-Selling Products:");
         for (int i = 0; i < Math.min(5, productList.size()); i++) {
             Products product = productList.get(i);
-            System.out.println((i+1) + ". " + product.getName() + " - Total Sold: " + product.getTotalSold());
+            System.out.println((i + 1) + ". " + product.getName() + " - Total Sold: " + product.getTotalSold());
         }
     }
 
@@ -455,41 +466,41 @@ public class Main {
     }
 
     private static void manageStorePosts() {
-    	  Scanner scanner = new Scanner(System.in);
-    	    PostService postService = new PostService(); // Assuming you have a PostService instance
-    	    
-    	    boolean exit = false;
-    	    while (!exit) {
-    	        System.out.println("==============================");
-    	        System.out.println("   Manage Content (Posts) and Feedback");
-    	        System.out.println("==============================");
-    	        System.out.println("1. View All Posts");
-    	        System.out.println("2. Add a New Post");
-    	        System.out.println("3. Delete a Post");
-    	        System.out.println("4. Go Back");
-    	        System.out.print("Choose an option: ");
+        Scanner scanner = new Scanner(System.in);
+        PostService postService = new PostService(); // Assuming you have a PostService instance
 
-    	        int choice = scanner.nextInt();
-    	        scanner.nextLine(); // Consume newline
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("==============================");
+            System.out.println("   Manage Content (Posts) and Feedback");
+            System.out.println("==============================");
+            System.out.println("1. View All Posts");
+            System.out.println("2. Add a New Post");
+            System.out.println("3. Delete a Post");
+            System.out.println("4. Go Back");
+            System.out.print("Choose an option: ");
 
-    	        switch (choice) {
-    	            case 1:
-    	                viewPosts(postService);
-    	                break;
-    	            case 2:
-    	                addPost(scanner, postService);
-    	                break;
-    	            case 3:
-    	                deletePost(scanner, postService);
-    	                break;
-    	            case 4:
-    	            
-    	                exit = true;
-    	                break;
-    	            default:
-    	                System.out.println("Invalid choice. Please try again.");
-    	        }
-    	    }
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    viewPosts(postService);
+                    break;
+                case 2:
+                    addPost(scanner, postService);
+                    break;
+                case 3:
+                    deletePost(scanner, postService);
+                    break;
+                case 4:
+
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
     }
 
     private static void addPost(Scanner scanner, PostService postService) {
@@ -544,90 +555,90 @@ public class Main {
             }
         }
     }
-   
+
 
     ///////////////////////////////
     ///////////////////////////////
     ////////////////////////////
-    
- public static void storeOwnerDashboard() {
-    Scanner scanner = new Scanner(System.in);
-    PostService postService = new PostService();
-    boolean logout = false;
 
-    while (!logout) {
-        System.out.println("==============================");
-        System.out.println("   Store Owner Dashboard");
-        System.out.println("==============================");
-        System.out.println("1. Manage Products");
-        System.out.println("2. Monitor Sales and Profits");
-        System.out.println("3. Manage Orders");
-        System.out.println("4. Manage Account Information");
-        System.out.println("5. View Product Feedback");
-        System.out.println("6. Communication Center");
-        System.out.println("7. Create a Post");
-        System.out.println("8. Log Out");
-        System.out.print("Enter your choice: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+    public static void storeOwnerDashboard() {
+        Scanner scanner = new Scanner(System.in);
+        PostService postService = new PostService();
+        boolean logout = false;
 
-        switch (choice) {
-            case 1:
-                manageProducts();
-                break;
-            case 2:
-                monitorSalesAndProfits();
-                break;
-            case 3:
-                manageOrders();
-                break;
-            case 4:
-                manageAccountInformation();
-                break;
-            case 5:
-                viewProductFeedback();
-                break;
-            case 6:
-                communicationCenter(user);
-                break;
-            case 7:
-                createPost(postService, user);
-                break;
-            case 8:
-                System.out.println("Logging out...");
-                logout = true;
-                main(null);
-                break;
-            default:
-                System.out.println("Invalid choice.");
-                break;
+        while (!logout) {
+            System.out.println("==============================");
+            System.out.println("   Store Owner Dashboard");
+            System.out.println("==============================");
+            System.out.println("1. Manage Products");
+            System.out.println("2. Monitor Sales and Profits");
+            System.out.println("3. Manage Orders");
+            System.out.println("4. Manage Account Information");
+            System.out.println("5. View Product Feedback");
+            System.out.println("6. Communication Center");
+            System.out.println("7. Create a Post");
+            System.out.println("8. Log Out");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    manageProducts();
+                    break;
+                case 2:
+                    monitorSalesAndProfits();
+                    break;
+                case 3:
+                    manageOrders();
+                    break;
+                case 4:
+                    manageAccountInformation();
+                    break;
+                case 5:
+                    viewProductFeedback();
+                    break;
+                case 6:
+                    communicationCenter(user);
+                    break;
+                case 7:
+                    createPost(postService, user);
+                    break;
+                case 8:
+                    System.out.println("Logging out...");
+                    logout = true;
+                    main(null);
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
+            }
         }
     }
-}
 
-// Method to create a post
-private static void createPost(PostService postService, NormalUser user) {
-    Scanner scanner = new Scanner(System.in);
+    // Method to create a post
+    private static void createPost(PostService postService, NormalUser user) {
+        Scanner scanner = new Scanner(System.in);
 
-    System.out.print("Enter post title: ");
-    String title = scanner.nextLine();
+        System.out.print("Enter post title: ");
+        String title = scanner.nextLine();
 
-    System.out.print("Enter post tag: ");
-    String tag = scanner.nextLine();
+        System.out.print("Enter post tag: ");
+        String tag = scanner.nextLine();
 
-    System.out.print("Enter post description: ");
-    String description = scanner.nextLine();
+        System.out.print("Enter post description: ");
+        String description = scanner.nextLine();
 
-    Posts post = new Posts(user.getId(), user.getId(), title, tag, description);
-    postService.addPost(post);
+        Posts post = new Posts(user.getId(), user.getId(), title, tag, description);
+        postService.addPost(post);
 
-    System.out.println("Post created successfully!");
-}
+        System.out.println("Post created successfully!");
+    }
 
     /////////////////////////////////////
-   
+
     //////// Suplier ///////////////
-     public static void supplierDashboard() {
+    public static void supplierDashboard() {
         Scanner scanner = new Scanner(System.in);
         boolean logout = false;
 
@@ -667,71 +678,71 @@ private static void createPost(PostService postService, NormalUser user) {
                     break;
             }
         }
-    }  
+    }
     ///////////////////////////////////////////
     ////////////////////////////////
-    
- public static void normalUserDashboard(NormalUser user) {
-    Scanner scanner = new Scanner(System.in);
-    PostService postService = new PostService();
-    boolean logout = false;
 
-    while (!logout) {
-        System.out.println("==============================");
-        System.out.println("   User Dashboard");
-        System.out.println("==============================");
-        System.out.println("1. Manage Account");
-        System.out.println("2. Explore and Buy Sweets");
-        System.out.println("3. Communication Center");
-        System.out.println("4. View Posts");
-        System.out.println("5. Log Out");
-        System.out.print("Enter your choice: ");
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+    public static void normalUserDashboard(NormalUser user) {
+        Scanner scanner = new Scanner(System.in);
+        PostService postService = new PostService();
+        boolean logout = false;
 
-        switch (choice) {
-            case 1:
-                manageAccount(user);
-                break;
-            case 2:
-                exploreAndBuySweets();
-                break;
-            case 3:
-                communicationCenter(user);
-                break;
-            case 4:
-                viewPosts(postService);
-                break;
-            case 5:
-                System.out.println("Logging out...");
-                logout = true;
-                main(null);
-                break;
-            default:
-                System.out.println("Invalid choice.");
-                break;
+        while (!logout) {
+            System.out.println("==============================");
+            System.out.println("   User Dashboard");
+            System.out.println("==============================");
+            System.out.println("1. Manage Account");
+            System.out.println("2. Explore and Buy Sweets");
+            System.out.println("3. Communication Center");
+            System.out.println("4. View Posts");
+            System.out.println("5. Log Out");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    manageAccount(user);
+                    break;
+                case 2:
+                    exploreAndBuySweets();
+                    break;
+                case 3:
+                    communicationCenter(user);
+                    break;
+                case 4:
+                    viewPosts(postService);
+                    break;
+                case 5:
+                    System.out.println("Logging out...");
+                    logout = true;
+                    main(null);
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
+            }
         }
     }
-}
 
- private static void viewPosts(PostService postService) {
-	    List<Posts> posts = postService.getPosts();
+    private static void viewPosts(PostService postService) {
+        List<Posts> posts = postService.getPosts();
 
-	    if (posts.isEmpty()) {
-	        System.out.println("No posts available.");
-	    } else {
-	        System.out.println("Available Posts:");
-	        int index = 1;
-	        for (Posts post : posts) {
-	            System.out.println(index + "-");
-	            System.out.println(" Title: " + post.getTitle());
-	            System.out.println(" Tag: " + post.getTag());
-	            System.out.println(" Description: " + post.getDescription());
-	            System.out.println();
-	            index++;
-	        }
-	    }
-	}
+        if (posts.isEmpty()) {
+            System.out.println("No posts available.");
+        } else {
+            System.out.println("Available Posts:");
+            int index = 1;
+            for (Posts post : posts) {
+                System.out.println(index + "-");
+                System.out.println(" Title: " + post.getTitle());
+                System.out.println(" Tag: " + post.getTag());
+                System.out.println(" Description: " + post.getDescription());
+                System.out.println();
+                index++;
+            }
+        }
+    }
 
     public static void manageProducts() {
         Scanner scanner = new Scanner(System.in);
@@ -766,9 +777,9 @@ private static void createPost(PostService postService, NormalUser user) {
 
                     // Assume storeId is 1 for this example
                     int storeId = 1;
-                    Products product = new Products(0, storeId, name, price, totalSold ,dietaryInfo);
+                    Products product = new Products(0, storeId, name, price, totalSold, dietaryInfo);
                     productService.addProduct(product);
-                   
+
                     System.out.println("Product added ");
                     break;
 
@@ -794,7 +805,7 @@ private static void createPost(PostService postService, NormalUser user) {
                     System.out.print("Enter new total sold (leave empty to keep current): ");
                     String totalSoldInput = scanner.nextLine();
                     if (!totalSoldInput.isEmpty()) existingProduct.setTotalSold(Integer.parseInt(totalSoldInput));
-                   
+
                     System.out.print("Enter dietary Info (leave empty to keep current): ");
                     String dietary_Info = scanner.nextLine();
                     if (!dietary_Info.isEmpty()) existingProduct.setDietaryInfo(dietary_Info);
@@ -814,11 +825,11 @@ private static void createPost(PostService postService, NormalUser user) {
 
                 case 4:
                     System.out.println("All Products:");
-                    
-                        
-                            productService.printAllProducts();
-                         
-                    
+
+
+                    productService.printAllProducts();
+
+
                     break;
 
                 case 5:
@@ -833,102 +844,101 @@ private static void createPost(PostService postService, NormalUser user) {
         scanner.close();
     }
 
- 
 
- public static void manageSupProducts() {
-     Scanner scanner = new Scanner(System.in);
-     boolean running = true;
+    public static void manageSupProducts() {
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
 
-     while (running) {
-         System.out.println("==============================");
-         System.out.println("   Manage Products");
-         System.out.println("==============================");
-         System.out.println("Choose an option:");
-         System.out.println("1. Add a new product");
-         System.out.println("2. Update an existing product");
-         System.out.println("3. Remove a product");
-         System.out.println("4. View all products");
-         System.out.println("5. Back to Store Owner Dashboard");
-         System.out.print("Enter your choice: ");
+        while (running) {
+            System.out.println("==============================");
+            System.out.println("   Manage Products");
+            System.out.println("==============================");
+            System.out.println("Choose an option:");
+            System.out.println("1. Add a new product");
+            System.out.println("2. Update an existing product");
+            System.out.println("3. Remove a product");
+            System.out.println("4. View all products");
+            System.out.println("5. Back to Store Owner Dashboard");
+            System.out.print("Enter your choice: ");
 
-         int choice = scanner.nextInt();
-         scanner.nextLine(); // Consume newline
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
 
-         switch (choice) {
-             case 1:
-                 System.out.print("Enter product name: ");
-                 String name = scanner.nextLine();
-                 System.out.print("Enter product price: ");
-                 int price = scanner.nextInt();
-                 System.out.print("Enter total sold: ");
-                 int totalSold = scanner.nextInt();
-                 scanner.nextLine(); 
- 
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter product name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter product price: ");
+                    int price = scanner.nextInt();
+                    System.out.print("Enter total sold: ");
+                    int totalSold = scanner.nextInt();
+                    scanner.nextLine();
 
-                 // Assume storeId is 1 for this example
-                
-                 Products_Sup product = new Products_Sup(0, name, price, totalSold  );
-                 ProductService_Sup.addProduct(product);
-                
-                 System.out.println("Product added ");
-                 break;
 
-             case 2:
-                 System.out.print("Enter product number to update: ");
-                 int id = scanner.nextInt();
-                 scanner.nextLine(); // Consume newline
+                    // Assume storeId is 1 for this example
 
-                 Products_Sup existingProduct = ProductService_Sup.getProductById(id);
-                 if (existingProduct == null) {
-                     System.out.println("Product not found.");
-                     break;
-                 }
+                    Products_Sup product = new Products_Sup(0, name, price, totalSold);
+                    ProductService_Sup.addProduct(product);
 
-                 System.out.print("Enter new name (leave empty to keep current): ");
-                 String newName = scanner.nextLine();
-                 if (!newName.isEmpty()) existingProduct.setName(newName);
+                    System.out.println("Product added ");
+                    break;
 
-                 System.out.print("Enter new price (leave empty to keep current): ");
-                 String priceInput = scanner.nextLine();
-                 if (!priceInput.isEmpty()) existingProduct.setPrice(Integer.parseInt(priceInput));
+                case 2:
+                    System.out.print("Enter product number to update: ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
 
-                 System.out.print("Enter new total sold (leave empty to keep current): ");
-                 String totalSoldInput = scanner.nextLine();
-                 if (!totalSoldInput.isEmpty()) existingProduct.setTotalSold(Integer.parseInt(totalSoldInput));
+                    Products_Sup existingProduct = ProductService_Sup.getProductById(id);
+                    if (existingProduct == null) {
+                        System.out.println("Product not found.");
+                        break;
+                    }
 
-                 ProductService_Sup.updateProduct(id, existingProduct);
-                 System.out.println("Product updated.");
-                 break;
+                    System.out.print("Enter new name (leave empty to keep current): ");
+                    String newName = scanner.nextLine();
+                    if (!newName.isEmpty()) existingProduct.setName(newName);
 
-             case 3:
-                 System.out.print("Enter product ID to remove: ");
-                 int removeId = scanner.nextInt();
-                 scanner.nextLine(); // Consume newline
+                    System.out.print("Enter new price (leave empty to keep current): ");
+                    String priceInput = scanner.nextLine();
+                    if (!priceInput.isEmpty()) existingProduct.setPrice(Integer.parseInt(priceInput));
 
-                 ProductService_Sup.removeProduct(removeId);
-                 System.out.println("Product removed.");
-                 break;
+                    System.out.print("Enter new total sold (leave empty to keep current): ");
+                    String totalSoldInput = scanner.nextLine();
+                    if (!totalSoldInput.isEmpty()) existingProduct.setTotalSold(Integer.parseInt(totalSoldInput));
 
-             case 4:
-                 System.out.println("All Products:");
-                 
-                     
-                 ProductService_Sup.printAllProducts_Sup();
-                      
-                 
-                 break;
+                    ProductService_Sup.updateProduct(id, existingProduct);
+                    System.out.println("Product updated.");
+                    break;
 
-             case 5:
-                 running = false;
-                 supplierDashboard();
-                 break;
+                case 3:
+                    System.out.print("Enter product ID to remove: ");
+                    int removeId = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline
 
-             default:
-                 System.out.println("Invalid choice. Please try again.");
-         }
-     }
-     scanner.close();
- }
+                    ProductService_Sup.removeProduct(removeId);
+                    System.out.println("Product removed.");
+                    break;
+
+                case 4:
+                    System.out.println("All Products:");
+
+
+                    ProductService_Sup.printAllProducts_Sup();
+
+
+                    break;
+
+                case 5:
+                    running = false;
+                    supplierDashboard();
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+        scanner.close();
+    }
 
     // Admin specific functionalities
     public static void manageUsers() {
@@ -957,14 +967,14 @@ private static void createPost(PostService postService, NormalUser user) {
         for (Products product : allProducts) {
             int productSales = product.getPrice() * product.getTotalSold();
             int productProfit = (int) (product.getPrice() - (product.getPrice() * (product.getTotalSold() > 100 ? 0.20 : 0))); // Assuming a 20% discount for products sold over 100 units
-            
+
             totalSales += productSales;
             totalProfit += productProfit * product.getTotalSold();
         }
 
         System.out.println("Total Sales: $" + totalSales);
         System.out.println("Total Profit: $" + totalProfit);
-        
+
         System.out.println("\nProduct Details:");
         for (Products product : allProducts) {
             System.out.println(product);
@@ -997,8 +1007,8 @@ private static void createPost(PostService postService, NormalUser user) {
                     for (Order order : orders) {
                         System.out.println(order);
                     }
-                    if(orders == null) {
-                    	 System.out.println("The Orders is Empity... ");
+                    if (orders == null) {
+                        System.out.println("The Orders is Empity... ");
                     }
                     break;
 
@@ -1032,7 +1042,7 @@ private static void createPost(PostService postService, NormalUser user) {
         SupplierService supplierService = new SupplierService(); // Assuming you have an instance of SupplierService
 
         boolean exit = false;
-        
+
         while (!exit) {
             System.out.println("==============================");
             System.out.println("   Communicate with Users and Suppliers");
@@ -1043,7 +1053,7 @@ private static void createPost(PostService postService, NormalUser user) {
             System.out.println("3. View received messages");
             System.out.println("4. Back to Store Owner Dashboard");
             System.out.print("Enter your choice: ");
-            
+
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -1059,7 +1069,7 @@ private static void createPost(PostService postService, NormalUser user) {
                     break;
                 case 4:
                     exit = true;
-                    storeOwnerDashboard() ;
+                    storeOwnerDashboard();
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -1069,7 +1079,7 @@ private static void createPost(PostService postService, NormalUser user) {
     }
 
     private static void sendMessageToNormalUser(Scanner scanner, UserService userService) {
-   
+
     }
 
     private static void sendMessageToSupplier(Scanner scanner, SupplierService supplierService) {
@@ -1077,7 +1087,7 @@ private static void createPost(PostService postService, NormalUser user) {
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline
         Supplier supplier = supplierService.getSupplierById(id);
-        
+
         if (supplier != null) {
             System.out.print("Enter your message: ");
             String message = scanner.nextLine();
@@ -1087,13 +1097,13 @@ private static void createPost(PostService postService, NormalUser user) {
             System.out.println("Supplier not found.");
         }
     }
-    
+
     private static void sendMessageToOwner(Scanner scanner, StoreService supplierService) {
         System.out.print("Enter the ID of the Owner: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline
         Store supplie = StoreService.getStoreById(id);
- 
+
         if (supplie != null) {
             System.out.print("Enter your message: ");
             String message = scanner.nextLine();
@@ -1109,16 +1119,16 @@ private static void createPost(PostService postService, NormalUser user) {
         System.out.println("1. NormalUser");
         System.out.println("2. Supplier");
         System.out.print("Enter your choice: ");
-        
+
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
-        
+
         switch (choice) {
             case 1:
                 System.out.print("Enter the username of the NormalUser: ");
                 String username = scanner.nextLine();
                 NormalUser user = userService.getNormalUser(username);
-                
+
                 if (user != null) {
                     System.out.println("Messages for " + username + ":");
                     for (String message : user.getMessage()) {
@@ -1133,7 +1143,7 @@ private static void createPost(PostService postService, NormalUser user) {
                 int id = scanner.nextInt();
                 scanner.nextLine(); // Consume newline
                 Supplier supplier = supplierService.getSupplierById(id);
-                
+
                 if (supplier != null) {
                     System.out.println("Messages for Supplier ID " + id + ":");
                     for (String message : supplier.getMessage()) {
@@ -1155,16 +1165,16 @@ private static void createPost(PostService postService, NormalUser user) {
         System.out.println("1. NormalUser");
         System.out.println("2. Supplier");
         System.out.print("Enter your choice: ");
-        
+
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
-        
+
         switch (choice) {
             case 1:
                 System.out.print("Enter the username of the NormalUser: ");
                 String username = scanner.nextLine();
                 NormalUser user = userService.getNormalUser(username);
-                
+
                 if (user != null) {
                     System.out.println("Messages for " + username + ":");
                     for (String message : user.getMessage()) {
@@ -1179,7 +1189,7 @@ private static void createPost(PostService postService, NormalUser user) {
                 int id = scanner.nextInt();
                 scanner.nextLine(); // Consume newline
                 Store supplier = supplierService.getStoreById(id);
-                
+
                 if (supplier != null) {
                     System.out.println("Messages for Supplier ID " + id + ":");
                     for (String message : supplier.getMessage()) {
@@ -1195,8 +1205,6 @@ private static void createPost(PostService postService, NormalUser user) {
         }
     }
 
-
-  
 
     public static void manageAccountInformation() {
         Scanner scanner = new Scanner(System.in);
@@ -1288,45 +1296,46 @@ private static void createPost(PostService postService, NormalUser user) {
 
     // Supplier specific functionalities
     public static void communicateWithUsersAndStoreOwners() {
-    	   Scanner scanner = new Scanner(System.in);
-           UserService userService = new UserService(); // Assuming you have an instance of UserService
-           StoreService supplierService = new StoreService(); // Assuming you have an instance of SupplierService
+        Scanner scanner = new Scanner(System.in);
+        UserService userService = new UserService(); // Assuming you have an instance of UserService
+        StoreService supplierService = new StoreService(); // Assuming you have an instance of SupplierService
 
-           boolean exit = false;
-           
-           while (!exit) {
-               System.out.println("==============================");
-               System.out.println("   Communicate with Users and Suppliers");
-               System.out.println("==============================");
-               System.out.println("Choose an option:");
-               System.out.println("1. Send a message to a User");
-               System.out.println("2. Send a message to a OwnerStore");
-               System.out.println("3. View received messages");
-               System.out.println("4. Back to Supplier Dashboard");
-               System.out.print("Enter your choice: ");
-               
-               int choice = scanner.nextInt();
-               scanner.nextLine(); // Consume newline
+        boolean exit = false;
 
-               switch (choice) {
-                   case 1:
-                       sendMessageToNormalUser(scanner, userService);
-                       break;
-                   case 2:
-                       sendMessageToOwner(scanner, supplierService);
-                       break;
-                   case 3:
-                       viewReceivedMessagesSub(scanner, userService, supplierService);
-                       break;
-                   case 4:
-                       exit = true;
-                       supplierDashboard() ;
-                       break;
-                   default:
-                       System.out.println("Invalid choice. Please try again.");
-                       break;
-               }
-           } }
+        while (!exit) {
+            System.out.println("==============================");
+            System.out.println("   Communicate with Users and Suppliers");
+            System.out.println("==============================");
+            System.out.println("Choose an option:");
+            System.out.println("1. Send a message to a User");
+            System.out.println("2. Send a message to a OwnerStore");
+            System.out.println("3. View received messages");
+            System.out.println("4. Back to Supplier Dashboard");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    sendMessageToNormalUser(scanner, userService);
+                    break;
+                case 2:
+                    sendMessageToOwner(scanner, supplierService);
+                    break;
+                case 3:
+                    viewReceivedMessagesSub(scanner, userService, supplierService);
+                    break;
+                case 4:
+                    exit = true;
+                    supplierDashboard();
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
 
     // Normal User specific functionalities
     public static void manageAccount(NormalUser user) {
@@ -1404,219 +1413,229 @@ private static void createPost(PostService postService, NormalUser user) {
 
         System.out.println("Account information updated successfully.");
     }
-   public static void exploreAndBuySweets() {
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("==============================");
-    System.out.println("   Explore and Buy Sweets");
-    System.out.println("==============================");
 
-    boolean shopping = true;
+    public static void exploreAndBuySweets() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("==============================");
+        System.out.println("   Explore and Buy Sweets");
+        System.out.println("==============================");
 
-    while (shopping) {
-        System.out.println("Choose an option:");
-        System.out.println("1. Browse all dessert recipes");
-        System.out.println("2. Search for a dessert recipe");
-        System.out.println("3. Filter recipes by dietary needs or allergies");
-        System.out.println("4. Purchase desserts");
-        System.out.println("5. Go back to the User Dashboard");
+        boolean shopping = true;
+
+        while (shopping) {
+            System.out.println("Choose an option:");
+            System.out.println("1. Browse all dessert recipes");
+            System.out.println("2. Search for a dessert recipe");
+            System.out.println("3. Filter recipes by dietary needs or allergies");
+            System.out.println("4. Purchase desserts");
+            System.out.println("5. Go back to the User Dashboard");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    // Browse all dessert recipes
+                    productService.printAllProducts();
+                    break;
+
+                case 2:
+                    // Search for a dessert recipe
+                    System.out.print("Enter the name of the dessert you want to search for: ");
+                    String searchQuery = scanner.nextLine();
+                    productService.searchProductsByName(searchQuery);
+                    break;
+
+                case 3:
+                    // Filter recipes by dietary needs or allergies
+                    System.out.println("Enter the dietary need or allergy to filter by (e.g., gluten-free, nut-free): ");
+                    String filter = scanner.nextLine();
+                    productService.filterProductsByDietaryNeeds(filter);
+                    break;
+
+                case 4:
+                    // Purchase desserts
+                    System.out.print("Enter the number of the dessert you want to purchase: ");
+                    int productId = scanner.nextInt();
+                    scanner.nextLine(); // Consume newline left-over
+                    fID = productId;
+                    Products product = productService.getProductById(productId);
+
+                    if (product != null) {
+                        int price = product.getPrice();
+
+                        // Apply discounts based on price
+                        if (price > 100 && price < 149) {
+                            price *= 0.90;
+                            System.out.println("A 10% discount has been applied!");
+                        } else if (price >= 150 && price <= 199) {
+                            price *= 0.80;
+                            System.out.println("A 20% discount has been applied!");
+                        } else if (price >= 200) {
+                            price *= 0.70;
+                            System.out.println("A 30% discount has been applied!");
+                        }
+
+                        System.out.println("Purchased " + product.getName() + " for $" + price);
+
+                        // Send email notification
+                        String recipient = "amer23102002@gmail.com";
+                        String subject = "Purchase Confirmation";
+                        String content = "Thank you for your purchase!\n\nProduct: " + product.getName() +
+                                "\nPrice: $" + price + "\n\nBest regards,\nYour Store";
+                        EmailService.sendEmail(recipient, subject, content);
+
+                        System.out.print("Please provide feedback for " + product.getName() + ": ");
+                        String feedbackInput = scanner.nextLine();
+                        LinkedList<String> feedbackText = new LinkedList<>();
+                        feedbackText.add(feedbackInput);
+
+                        Feedback feedback = new Feedback(user.getName(), fID, feedbackText);
+                        feedbackList.add(feedback);
+
+                        System.out.println("Thank you for your feedback!");
+
+                    } else {
+                        System.out.println("Product not found.");
+                    }
+                    break;
+
+
+                case 5:
+                    shopping = false;
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
+
+
+    //////////////////
+
+
+    public static void communicationCenter(NormalUser currentUser) {
+        Scanner scanner = new Scanner(System.in);
+        boolean exit = false;
+
+        while (!exit) {
+            System.out.println("==============================");
+            System.out.println("   Communication Center");
+            System.out.println("==============================");
+            System.out.println("1. Send a message");
+            System.out.println("2. View received messages");
+            System.out.println("3. Back to Dashboard");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    sendMessage(scanner, currentUser);
+                    break;
+                case 2:
+                    viewReceivedMessages(currentUser);
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
+            }
+        }
+    }
+
+    private static void sendMessage(Scanner scanner, NormalUser sender) {
+        System.out.println("Select recipient type:");
+        System.out.println("1. User");
+        System.out.println("2. Supplier");
+        System.out.println("3. StoreOwner");
         System.out.print("Enter your choice: ");
-        int choice = scanner.nextInt();
+        int recipientType = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
-        switch (choice) {
-            case 1:
-                // Browse all dessert recipes
-                productService.printAllProducts();
+        System.out.println("Enter recipient name:");
+        String recipientIdentifier = scanner.nextLine();
+
+        NormalUser recipient = null;
+
+        // Search for the recipient in the allUsers list by name
+        for (NormalUser user : NormalUser.allUsers) {
+            if (user.getName().equalsIgnoreCase(recipientIdentifier)) {
+                recipient = user;
                 break;
-
-            case 2:
-                // Search for a dessert recipe
-                System.out.print("Enter the name of the dessert you want to search for: ");
-                String searchQuery = scanner.nextLine();
-                productService.searchProductsByName(searchQuery);
-                break;
-
-            case 3:
-                // Filter recipes by dietary needs or allergies
-                System.out.println("Enter the dietary need or allergy to filter by (e.g., gluten-free, nut-free): ");
-                String filter = scanner.nextLine();
-              productService.filterProductsByDietaryNeeds(filter);
-                break;
-
-            case 4:
-                // Purchase desserts
-                System.out.print("Enter the number of the dessert you want to purchase: ");
-                int productId = scanner.nextInt();
-                scanner.nextLine(); // Consume newline left-over
-                fID = productId;
-                Products product = productService.getProductById(productId);
-
-                if (product != null) {
-                    int price = product.getPrice();
-
-                    // Apply discounts based on price
-                    if (price > 100 && price < 149) {
-                        price *= 0.90;
-                        System.out.println("A 10% discount has been applied!");
-                    } else if (price >= 150 && price <= 199) {
-                        price *= 0.80;
-                        System.out.println("A 20% discount has been applied!");
-                    } else if (price >= 200) {
-                        price *= 0.70;
-                        System.out.println("A 30% discount has been applied!");
-                    }
-
-                    System.out.println("Purchased " + product.getName() + " for $" + price);
-
-                    // Send email notification
-                    String recipient = "amer23102002@gmail.com";
-                    String subject = "Purchase Confirmation";
-                    String content = "Thank you for your purchase!\n\nProduct: " + product.getName() +
-                                     "\nPrice: $" + price + "\n\nBest regards,\nYour Store";
-                    EmailService.sendEmail(recipient, subject, content);
-
-                    System.out.print("Please provide feedback for " + product.getName() + ": ");
-                    String feedbackInput = scanner.nextLine();
-                    LinkedList<String> feedbackText = new LinkedList<>();
-                    feedbackText.add(feedbackInput);
-
-                    Feedback feedback = new Feedback(user.getName(), fID, feedbackText);
-                    feedbackList.add(feedback);
-
-                    System.out.println("Thank you for your feedback!");
-
-                } else {
-                    System.out.println("Product not found.");
-                }
-                break;
-
-
-
-            case 5:
-                shopping = false;
-                break;
-
-            default:
-                System.out.println("Invalid choice. Please try again.");
-                break;
+            }
         }
+
+        if (recipient == null) {
+            System.out.println("Recipient not found.");
+            return;
+        }
+
+        System.out.print("Enter your message: ");
+        String messageContent = scanner.nextLine();
+
+        Message message = new Message(sender.getId(), sender.getName(), sender.getRole(), messageContent);
+
+        if (!messageBox.containsKey(recipient.getId())) {
+            messageBox.put(recipient.getId(), new ArrayList<>());
+        }
+        messageBox.get(recipient.getId()).add(message);
+
+        System.out.println("Message sent successfully to " + recipient.getName() + ".");
     }
-}
 
- 
-   
-   //////////////////
-   
-   
-   
-   public static void communicationCenter(NormalUser currentUser) {
-       Scanner scanner = new Scanner(System.in);
-       boolean exit = false;
-       
-       while (!exit) {
-           System.out.println("==============================");
-           System.out.println("   Communication Center");
-           System.out.println("==============================");
-           System.out.println("1. Send a message");
-           System.out.println("2. View received messages");
-           System.out.println("3. Back to Dashboard");
-           System.out.print("Enter your choice: ");
-           
-           int choice = scanner.nextInt();
-           scanner.nextLine(); // Consume newline
-
-           switch (choice) {
-               case 1:
-                   sendMessage(scanner, currentUser);
-                   break;
-               case 2:
-                   viewReceivedMessages(currentUser);
-                   break;
-               case 3:
-                   exit = true;
-                   break;
-               default:
-                   System.out.println("Invalid choice. Please try again.");
-                   break;
-           }
-       }
-   }
-   
- private static void sendMessage(Scanner scanner, NormalUser sender) {
-    System.out.println("Select recipient type:");
-    System.out.println("1. User");
-    System.out.println("2. Supplier");
-    System.out.println("3. StoreOwner");
-    System.out.print("Enter your choice: ");
-    int recipientType = scanner.nextInt();
-    scanner.nextLine(); // Consume newline
-
-    System.out.println("Enter recipient name:");
-    String recipientIdentifier = scanner.nextLine();
-
-    NormalUser recipient = null;
-
-    // Search for the recipient in the allUsers list by name
-    for (NormalUser user : NormalUser.allUsers) {
-        if (user.getName().equalsIgnoreCase(recipientIdentifier)) {
-            recipient = user;
-            break;
+    private static void viewReceivedMessages(NormalUser receiver) {
+        List<Message> messages = messageBox.get(receiver.getId());
+        if (messages == null || messages.isEmpty()) {
+            System.out.println("You have no messages.");
+        } else {
+            System.out.println("Your messages:");
+            for (Message message : messages) {
+                System.out.println("From: " + message.getSenderName() + " (" + message.getSenderRole() + ")");
+                System.out.println("Message: " + message.getContent());
+                System.out.println("--------------------");
+            }
         }
     }
 
-    if (recipient == null) {
-        System.out.println("Recipient not found.");
-        return;
+    static class Message {
+        private int senderId;
+        private String senderName;
+        private String senderRole;
+        private String content;
+
+        public Message(int senderId, String senderName, String senderRole, String content) {
+            this.senderId = senderId;
+            this.senderName = senderName;
+            this.senderRole = senderRole;
+            this.content = content;
+        }
+
+
+        public int getSenderId() {
+            return senderId;
+        }
+
+        public String getSenderName() {
+            return senderName;
+        }
+
+        public String getSenderRole() {
+            return senderRole;
+        }
+
+        public String getContent() {
+            return content;
+        }
     }
 
-    System.out.print("Enter your message: ");
-    String messageContent = scanner.nextLine();
+    /////////////////////////////
 
-    Message message = new Message(sender.getId(), sender.getName(), sender.getRole(), messageContent);
-
-    if (!messageBox.containsKey(recipient.getId())) {
-        messageBox.put(recipient.getId(), new ArrayList<>());
-    }
-    messageBox.get(recipient.getId()).add(message);
-
-    System.out.println("Message sent successfully to " + recipient.getName() + ".");
-}
-
-   private static void viewReceivedMessages(NormalUser receiver) {
-       List<Message> messages = messageBox.get(receiver.getId());
-       if (messages == null || messages.isEmpty()) {
-           System.out.println("You have no messages.");
-       } else {
-           System.out.println("Your messages:");
-           for (Message message : messages) {
-               System.out.println("From: " + message.getSenderName() + " (" + message.getSenderRole() + ")");
-               System.out.println("Message: " + message.getContent());
-               System.out.println("--------------------");
-           }
-       }
-   }
-   static class Message {
-       private int senderId;
-       private String senderName;
-       private String senderRole;
-       private String content;
-
-       public Message(int senderId, String senderName, String senderRole, String content) {
-           this.senderId = senderId;
-           this.senderName = senderName;
-           this.senderRole = senderRole;
-           this.content = content;
-       }
-
-       
-       public int getSenderId() { return senderId; }
-       public String getSenderName() { return senderName; }
-       public String getSenderRole() { return senderRole; }
-       public String getContent() { return content; }
-   }
-   
- /////////////////////////////
-   
     public static void viewProductFeedback() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the product number to view feedback: ");

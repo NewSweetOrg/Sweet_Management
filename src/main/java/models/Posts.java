@@ -14,14 +14,8 @@ public class Posts {
         this.tag = tag;
         this.description = description;
     }
-  
 
-    public Posts(int i, String title2, String tag2, String description2) {
-		// TODO Auto-generated constructor stub
-	}
-
-
-	public int getId() {
+    public int getId() {
         return id;
     }
 
@@ -31,10 +25,6 @@ public class Posts {
 
     public int getNormalUserId() {
         return normalUserId;
-    }
-
-    public void setNormalUserId(int normalUserId) {
-        this.normalUserId = normalUserId;
     }
 
     public String getTitle() {
@@ -49,16 +39,8 @@ public class Posts {
         return tag;
     }
 
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     @Override

@@ -1,6 +1,7 @@
-package  services;
+package services;
 
-import  models.Feedback;
+import models.Feedback;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,9 +21,5 @@ public class FeedbackService {
         if (feedback != null) {
             feedback.setReviewed(true);
         }
-    }
-
-    public Map<String, Feedback> getAllFeedbacks() {
-        return new HashMap<>(feedbacks);
     }
 }

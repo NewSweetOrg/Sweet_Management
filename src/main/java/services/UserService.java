@@ -43,12 +43,4 @@ public class UserService {
         }
         return allUsers.values();
     }
-
-    public Map<String, NormalUser> getUsersByCity(String city) {
-        return usersByCity.getOrDefault(city, new HashMap<>());
-    }
-
-    public Collection<String> getAllCities() {
-        return usersByCity.keySet();
-    }
 }

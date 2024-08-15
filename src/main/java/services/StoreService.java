@@ -1,6 +1,7 @@
 package services;
 
 import models.Store;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,8 +33,9 @@ public class StoreService {
     public List<Store> getAllStores() {
         return stores; // Return the list of stores directly
     }
+
     public int addSaleToStore() {
-		return 0;
-    	
+        return 0;
+
     }
 }

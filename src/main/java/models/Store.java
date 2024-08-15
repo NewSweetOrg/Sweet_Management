@@ -21,12 +21,8 @@ public class Store extends GeneralUser {
         this.sales = sales;
         this.message = new LinkedList<>();
         this.products = new LinkedList<>();
-        
-        stores.add(this);
-    }
 
-    public static LinkedList<Store> getAllStores() {
-        return new LinkedList<>(stores);
+        stores.add(this);
     }
 
     public LinkedList<String> getProducts() {
@@ -77,12 +73,6 @@ public class Store extends GeneralUser {
         return message;
     }
 
-    public void setMessage(LinkedList<String> message) {
-        this.message = message;
-    }
-
-  
-
     public void setProducts(LinkedList<String> products) {
         this.products = products;
     }
@@ -103,8 +93,8 @@ public class Store extends GeneralUser {
 
     public void addProduct(Products product) {
         if (product != null) {
-            products.add(product.getName() + " - Price: " + product.getPrice()); 
-            product.setStoreOrSupplierId(this.id); 
+            products.add(product.getName() + " - Price: " + product.getPrice());
+            product.setStoreOrSupplierId(this.id);
         }
     }
 

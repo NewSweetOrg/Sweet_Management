@@ -1,13 +1,17 @@
 package services;
+
 import java.util.Properties;
 import javax.mail.*;
 import javax.mail.internet.*;
 
 public class EmailService {
-
     public static void sendEmail(String recipient, String subject, String content) {
-        final String fromEmail = "your-email@gmail.com"; // Replace with your email
-        final String password = "your-app-password"; // Replace with your app password
+        final String fromEmail = System.getenv("EMAIL_USERNAME"); // Retrieve from environment variables
+        final String password = System.getenv("EMAIL_PASSWORD"); // Retrieve from environment variables
+
+        if (fromEmail == null || password == null) {
+            throw new IllegalStateException("Email credentials are not set in the environment variables.");
+        }
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -16,11 +20,11 @@ public class EmailService {
         props.put("mail.smtp.port", "587");
 
         Session session = Session.getInstance(props,
-            new javax.mail.Authenticator() {
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(fromEmail, password);
-                }
-            });
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(fromEmail, password);
+                    }
+                });
 
         try {
             Message message = new MimeMessage(session);
@@ -28,10 +32,8 @@ public class EmailService {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
             message.setSubject(subject);
             message.setText(content);
-
             Transport.send(message);
             System.out.println("Email sent successfully to " + recipient);
-
         } catch (MessagingException e) {
             e.printStackTrace();
             System.out.println("Failed to send email: " + e.getMessage());

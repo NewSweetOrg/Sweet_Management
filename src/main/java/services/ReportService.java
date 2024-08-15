@@ -32,7 +32,7 @@ public class ReportService {
         Map<String, List<Products>> bestSellingProductsReport = new HashMap<>();
 
         for (Store store : stores) {
-     //       bestSellingProductsReport.put(store.getName(), store.getBestSellingProducts());  // Getting the best-selling products for each store
+            //       bestSellingProductsReport.put(store.getName(), store.getBestSellingProducts());  // Getting the best-selling products for each store
         }
 
         return bestSellingProductsReport;

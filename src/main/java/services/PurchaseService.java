@@ -38,18 +38,5 @@ public class PurchaseService {
         return true;
     }
 
-    public String checkOrderStatus(String orderId) {
-        if (orders.containsKey(orderId)) {
-            String status = orders.get(orderId);
-            if ("delivered".equalsIgnoreCase(status)) {
-                return "Order " + orderId + " is delivered. ✔"; // Display delivered check
-            } else {
-                return "Order " + orderId + " is " + status;
-            }
-        } else {
-            return "Order " + orderId + " not found.";
-        }
-    }
-
 }
 

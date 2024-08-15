@@ -1,6 +1,6 @@
 package models;
 
- 
+
 public class Content {
     private String title;
     private String content;
@@ -16,13 +16,5 @@ public class Content {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 }

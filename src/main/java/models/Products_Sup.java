@@ -28,31 +28,51 @@ public class Products_Sup {
     }
 
     // Getters and Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-    public int getStoreOrSupplierId() { return storeOrSupplierId; }
-    public void setStoreOrSupplierId(int storeOrSupplierId) { this.storeOrSupplierId = storeOrSupplierId; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getStoreOrSupplierId() {
+        return storeOrSupplierId;
+    }
+
+    public void setStoreOrSupplierId(int storeOrSupplierId) {
+        this.storeOrSupplierId = storeOrSupplierId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getPrice() {
         if (totalSold > 100) {
             return (int) (price * 0.80);
         }
         return price;
     }
-    public void setPrice(int price) { this.price = price; }
-    public int getTotalSold() { return totalSold; }
-    public void setTotalSold(int totalSold) { this.totalSold = totalSold; }
-    public LinkedList<String> getFeedback() { return feedback; }
-    public void setFeedback(LinkedList<String> feedback) { this.feedback = feedback; }
-    public String getDietaryInfo() { return dietaryInfo; }
-    public void setDietaryInfo(String dietaryInfo) { this.dietaryInfo = dietaryInfo; }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setTotalSold(int totalSold) {
+        this.totalSold = totalSold;
+    }
+
 
     @Override
     public String toString() {
         return "Product Number: " + id +
-               ", Name: " + name +
-               ", Price: " + price ;
-              
+                ", Name: " + name +
+                ", Price: " + price;
+
     }
 }

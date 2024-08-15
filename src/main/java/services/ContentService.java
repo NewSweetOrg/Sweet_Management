@@ -1,6 +1,7 @@
-package  services;
+package services;
 
-import  models.Content;
+import models.Content;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +19,5 @@ public class ContentService {
             }
         }
         return null;
-    }
-
-    public List<Content> getAllContents() {
-        return new ArrayList<>(contents);
     }
 }
