@@ -10,6 +10,36 @@ import java.util.logging.Logger;
 
 public class Main {
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
+    private static final String ADMIN = "Admin";
+    private static final String STORE_OWNER = "StoreOwner";
+    private static final String SUPPLIER = "Supplier";
+    private static final String NORMAL_USER = "NormalUser";
+    private static final String SEPARATOR = "==============================";
+    private static final String CHOOSE_OPTION_MESSAGE = "Choose an option: ";
+    private static final String LOGGING_OUT_MESSAGE = "Logging out...";
+    private static final String INVALID_CHOICE_MESSAGE = "Invalid choice. Please try again.";
+    private static final String INVALID_CHOICE_SHORT_MESSAGE = "Invalid choice.";
+    private static final String TOTAL_SALES_MESSAGE = "Total Sales: $";
+    private static final String SEPARATOR_LINE = "-------------------------";
+    private static final String CITY = "City: ";
+    private static final String ENTER_CHOICE_MESSAGE = "Enter your choice: ";
+    private static final String PRODUCT_NOT_FOUND_MESSAGE = "Product not found.";
+    private static final String ENTER_NEW_NAME_MESSAGE = "Enter new name (leave empty to keep current): ";
+    private static final String ENTER_SUPPLIER_ID_MESSAGE = "Enter the ID of the Supplier: ";
+    private static final String ENTER_MESSAGE_MESSAGE = "Enter your message: ";
+    private static final String SUPPLIER_NOT_FOUND_MESSAGE = "Supplier not found.";
+    private static final String SUPPLIER_OPTION = "2. Supplier";
+
+
+
+
+
+
+
+
+
+
+
 
     private static NormalUser user;
 
@@ -82,16 +112,16 @@ public class Main {
                 String role = "";
                 switch (roleChoice) {
                     case 1:
-                        role = "Admin";
+                        role = ADMIN;
                         break;
                     case 2:
-                        role = "StoreOwner";
+                        role = STORE_OWNER;
                         break;
                     case 3:
-                        role = "Supplier";
+                        role = SUPPLIER;
                         break;
                     case 4:
-                        role = "NormalUser";
+                        role = NORMAL_USER;
                         break;
                     default:
                         LOGGER.warning("Invalid role choice.");
@@ -127,13 +157,13 @@ public class Main {
                     String loginRole = "";
                     switch (loginRoleChoice) {
                         case 1:
-                            loginRole = "Admin";
+                            loginRole = ADMIN;
                             break;
                         case 2:
-                            loginRole = "StoreOwner";
+                            loginRole = STORE_OWNER;
                             break;
                         case 3:
-                            loginRole = "Supplier";
+                            loginRole = SUPPLIER;
                             break;
                         case 4:
                             loginRole = "NormalUser";
@@ -164,6 +194,9 @@ public class Main {
                                 case "normaluser":
                                     normalUserDashboard(user);
                                     break;
+                                default:
+                                    LOGGER.warning("Invalid role");
+                                    break;
                             }
                             break; // Exit the for loop once a match is found
                         }
@@ -184,16 +217,16 @@ public class Main {
         boolean exit = false;
 
         while (!exit) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Admin Dashboard");
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("1. Manage Users");
             LOGGER.info("2. Generate Financial Reports");
             LOGGER.info("3. View Best-Selling Products");
             LOGGER.info("4. Sort Users by City");
             LOGGER.info("5. Manage Content(Posts) and Feedback");
             LOGGER.info("6. Log Out");
-            LOGGER.info("Choose an option: ");
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -216,10 +249,10 @@ public class Main {
                     break;
                 case 6:
                     exit = true;
-                    LOGGER.info("Logging out...");
+                    LOGGER.info(LOGGING_OUT_MESSAGE);
                     break;
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
             }
         }
     }
@@ -235,7 +268,7 @@ public class Main {
             LOGGER.info("3. Update User");
             LOGGER.info("4. Delete User");
             LOGGER.info("5. Back to Admin Dashboard");
-            LOGGER.info("Choose an option: ");
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -257,7 +290,7 @@ public class Main {
                     back = true;
                     break;
                 default:
-                    LOGGER.warning("Invalid choice.");
+                    LOGGER.warning(INVALID_CHOICE_SHORT_MESSAGE);
             }
         }
     }
@@ -293,20 +326,20 @@ public class Main {
         String role = "";
         switch (roleChoice) {
             case 1:
-                role = "Admin";
+                role = ADMIN;
                 break;
             case 2:
-                role = "StoreOwner";
+                role = STORE_OWNER;
                 break;
             case 3:
-                role = "Supplier";
+                role = SUPPLIER;
                 break;
             case 4:
-                role = "NormalUser";
+                role = NORMAL_USER;
                 break;
             default:
                 LOGGER.warning("Invalid role. Setting as NormalUser.");
-                role = "NormalUser";
+                role = NORMAL_USER;
         }
 
         NormalUser newUser = new NormalUser(userList.size(), name, password, city, phone, role);
@@ -393,9 +426,9 @@ public class Main {
                 }
             }
             LOGGER.info("Store: " + store.getName());
-            LOGGER.info("Total Sales: $" + totalSales);
+            LOGGER.info(TOTAL_SALES_MESSAGE + totalSales);
             LOGGER.info("Total Profit: $" + totalProfit);
-            LOGGER.info("-------------------------");
+            LOGGER.info(SEPARATOR_LINE);
         }
 
         // Report for Suppliers
@@ -408,8 +441,8 @@ public class Main {
                 }
             }
             LOGGER.info("Supplier: " + supplier.getName());
-            LOGGER.info("Total Sales: $" + totalSales);
-            LOGGER.info("-------------------------");
+            LOGGER.info(TOTAL_SALES_MESSAGE + totalSales);
+            LOGGER.info(SEPARATOR_LINE);
         }
     }
 
@@ -436,11 +469,11 @@ public class Main {
         }
 
         for (Map.Entry<String, List<NormalUser>> entry : usersByCity.entrySet()) {
-            LOGGER.info("City: " + entry.getKey());
+            LOGGER.info(CITY + entry.getKey());
             for (NormalUser user : entry.getValue()) {
                 LOGGER.info("  " + user.getName() + " - " + user.getRole());
             }
-            LOGGER.info("-------------------------");
+            LOGGER.info(SEPARATOR_LINE);
         }
     }
 
@@ -453,7 +486,7 @@ public class Main {
             LOGGER.info("1. Manage Store Posts");
             LOGGER.info("2. Manage User Feedback");
             LOGGER.info("3. Back to Admin Dashboard");
-            LOGGER.info("Choose an option: ");
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -469,7 +502,7 @@ public class Main {
                     back = true;
                     break;
                 default:
-                    LOGGER.warning("Invalid choice.");
+                    LOGGER.warning(INVALID_CHOICE_SHORT_MESSAGE);
             }
         }
     }
@@ -480,9 +513,9 @@ public class Main {
 
         boolean exit = false;
         while (!exit) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Manage Content (Posts) and Feedback");
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("1. View All Posts");
             LOGGER.info("2. Add a New Post");
             LOGGER.info("3. Delete a Post");
@@ -507,7 +540,7 @@ public class Main {
                     exit = true;
                     break;
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
             }
         }
     }
@@ -576,9 +609,9 @@ public class Main {
         boolean logout = false;
 
         while (!logout) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Store Owner Dashboard");
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("1. Manage Products");
             LOGGER.info("2. Monitor Sales and Profits");
             LOGGER.info("3. Manage Orders");
@@ -587,7 +620,7 @@ public class Main {
             LOGGER.info("6. Communication Center");
             LOGGER.info("7. Create a Post");
             LOGGER.info("8. Log Out");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -614,12 +647,12 @@ public class Main {
                     createPost(postService, user);
                     break;
                 case 8:
-                    LOGGER.info("Logging out...");
+                    LOGGER.info(LOGGING_OUT_MESSAGE);
                     logout = true;
                     main(null);
                     break;
                 default:
-                    LOGGER.warning("Invalid choice.");
+                    LOGGER.warning(INVALID_CHOICE_SHORT_MESSAGE);
                     break;
             }
         }
@@ -652,15 +685,15 @@ public class Main {
         boolean logout = false;
 
         while (!logout) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Supplier Dashboard");
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("1. Manage Products");
             LOGGER.info("2. Manage Orders");
             LOGGER.info("3. Manage Account Information");
             LOGGER.info("4. Communication Center");
             LOGGER.info("5. Log Out");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -678,12 +711,12 @@ public class Main {
                     communicationCenter(user);
                     break;
                 case 5:
-                    LOGGER.info("Logging out...");
+                    LOGGER.info(LOGGING_OUT_MESSAGE);
                     logout = true;
                     main(null);
                     break;
                 default:
-                    LOGGER.warning("Invalid choice.");
+                    LOGGER.warning(INVALID_CHOICE_SHORT_MESSAGE);
                     break;
             }
         }
@@ -697,15 +730,15 @@ public class Main {
         boolean logout = false;
 
         while (!logout) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   User Dashboard");
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("1. Manage Account");
             LOGGER.info("2. Explore and Buy Sweets");
             LOGGER.info("3. Communication Center");
             LOGGER.info("4. View Posts");
             LOGGER.info("5. Log Out");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -723,12 +756,12 @@ public class Main {
                     viewPosts(postService);
                     break;
                 case 5:
-                    LOGGER.info("Logging out...");
+                    LOGGER.info(LOGGING_OUT_MESSAGE);
                     logout = true;
                     main(null);
                     break;
                 default:
-                    LOGGER.warning("Invalid choice.");
+                    LOGGER.warning(INVALID_CHOICE_SHORT_MESSAGE);
                     break;
             }
         }
@@ -758,16 +791,16 @@ public class Main {
         boolean running = true;
 
         while (running) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Manage Products");
-            LOGGER.info("==============================");
-            LOGGER.info("Choose an option:");
+            LOGGER.info(SEPARATOR);
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
             LOGGER.info("1. Add a new product");
             LOGGER.info("2. Update an existing product");
             LOGGER.info("3. Remove a product");
             LOGGER.info("4. View all products");
             LOGGER.info("5. Back to Store Owner Dashboard");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -799,11 +832,11 @@ public class Main {
 
                     Products existingProduct = productService.getProductById(id);
                     if (existingProduct == null) {
-                        LOGGER.warning("Product not found.");
+                        LOGGER.warning(PRODUCT_NOT_FOUND_MESSAGE);
                         break;
                     }
 
-                    LOGGER.info("Enter new name (leave empty to keep current): ");
+                    LOGGER.info(ENTER_NEW_NAME_MESSAGE);
                     String newName = scanner.nextLine();
                     if (!newName.isEmpty()) existingProduct.setName(newName);
 
@@ -843,7 +876,7 @@ public class Main {
                     break;
 
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
             }
         }
         scanner.close();
@@ -854,16 +887,16 @@ public class Main {
         boolean running = true;
 
         while (running) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Manage Products");
-            LOGGER.info("==============================");
-            LOGGER.info("Choose an option:");
+            LOGGER.info(SEPARATOR);
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
             LOGGER.info("1. Add a new product");
             LOGGER.info("2. Update an existing product");
             LOGGER.info("3. Remove a product");
             LOGGER.info("4. View all products");
             LOGGER.info("5. Back to Store Owner Dashboard");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -893,11 +926,11 @@ public class Main {
 
                     Products_Sup existingProduct = ProductService_Sup.getProductById(id);
                     if (existingProduct == null) {
-                        LOGGER.warning("Product not found.");
+                        LOGGER.warning(PRODUCT_NOT_FOUND_MESSAGE);
                         break;
                     }
 
-                    LOGGER.info("Enter new name (leave empty to keep current): ");
+                    LOGGER.info(ENTER_NEW_NAME_MESSAGE);
                     String newName = scanner.nextLine();
                     if (!newName.isEmpty()) existingProduct.setName(newName);
 
@@ -933,7 +966,7 @@ public class Main {
                     break;
 
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
             }
         }
         scanner.close();
@@ -954,9 +987,9 @@ public class Main {
 
     // Store Owner specific functionalities
     public static void monitorSalesAndProfits() {
-        LOGGER.info("==============================");
+        LOGGER.info(SEPARATOR);
         LOGGER.info("   Monitor Sales and Profits");
-        LOGGER.info("==============================");
+        LOGGER.info(SEPARATOR);
 
         // Calculate total sales and profits
         List<Products> allProducts = productService.products;
@@ -971,7 +1004,7 @@ public class Main {
             totalProfit += productProfit * product.getTotalSold();
         }
 
-        LOGGER.info("Total Sales: $" + totalSales);
+        LOGGER.info(TOTAL_SALES_MESSAGE + totalSales);
         LOGGER.info("Total Profit: $" + totalProfit);
 
         LOGGER.info("\nProduct Details:");
@@ -987,14 +1020,14 @@ public class Main {
         boolean running = true;
 
         while (running) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Manage Orders");
-            LOGGER.info("==============================");
-            LOGGER.info("Choose an option:");
+            LOGGER.info(SEPARATOR);
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
             LOGGER.info("1. View all orders");
             LOGGER.info("2. Update order status");
             LOGGER.info("3. Back to Previous Menu");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -1029,7 +1062,7 @@ public class Main {
                     break;
 
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
             }
         }
     }
@@ -1042,15 +1075,15 @@ public class Main {
         boolean exit = false;
 
         while (!exit) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Communicate with Users and Suppliers");
-            LOGGER.info("==============================");
-            LOGGER.info("Choose an option:");
+            LOGGER.info(SEPARATOR);
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
             LOGGER.info("1. Send a message to a User");
             LOGGER.info("2. Send a message to a Supplier");
             LOGGER.info("3. View received messages");
             LOGGER.info("4. Back to Store Owner Dashboard");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -1070,7 +1103,7 @@ public class Main {
                     storeOwnerDashboard();
                     break;
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
                     break;
             }
         }
@@ -1081,18 +1114,18 @@ public class Main {
     }
 
     private static void sendMessageToSupplier(Scanner scanner, SupplierService supplierService) {
-        LOGGER.info("Enter the ID of the Supplier: ");
+        LOGGER.info(ENTER_SUPPLIER_ID_MESSAGE);
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline
         Supplier supplier = supplierService.getSupplierById(id);
 
         if (supplier != null) {
-            LOGGER.info("Enter your message: ");
+            LOGGER.info(ENTER_MESSAGE_MESSAGE);
             String message = scanner.nextLine();
             supplier.getMessage().add(message);
             LOGGER.info("Message sent to Supplier ID " + id);
         } else {
-            LOGGER.warning("Supplier not found.");
+            LOGGER.warning(SUPPLIER_NOT_FOUND_MESSAGE);
         }
     }
 
@@ -1103,7 +1136,7 @@ public class Main {
         Store supplie = StoreService.getStoreById(id);
 
         if (supplie != null) {
-            LOGGER.info("Enter your message: ");
+            LOGGER.info(ENTER_MESSAGE_MESSAGE);
             String message = scanner.nextLine();
             supplie.getMessage().add(message);
             LOGGER.info("Message sent to Owner ID " + id);
@@ -1115,8 +1148,8 @@ public class Main {
     private static void viewReceivedMessages(Scanner scanner, UserService userService, SupplierService supplierService) {
         LOGGER.info("Choose the type of user to view messages:");
         LOGGER.info("1. NormalUser");
-        LOGGER.info("2. Supplier");
-        LOGGER.info("Enter your choice: ");
+        LOGGER.info(SUPPLIER_OPTION);
+        LOGGER.info(ENTER_CHOICE_MESSAGE);
 
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
@@ -1137,7 +1170,7 @@ public class Main {
                 }
                 break;
             case 2:
-                LOGGER.info("Enter the ID of the Supplier: ");
+                LOGGER.info(ENTER_SUPPLIER_ID_MESSAGE);
                 int id = scanner.nextInt();
                 scanner.nextLine(); // Consume newline
                 Supplier supplier = supplierService.getSupplierById(id);
@@ -1148,11 +1181,11 @@ public class Main {
                         LOGGER.info("- " + message);
                     }
                 } else {
-                    LOGGER.warning("Supplier not found.");
+                    LOGGER.warning(SUPPLIER_NOT_FOUND_MESSAGE);
                 }
                 break;
             default:
-                LOGGER.warning("Invalid choice.");
+                LOGGER.warning(INVALID_CHOICE_SHORT_MESSAGE);
                 break;
         }
     }
@@ -1160,8 +1193,8 @@ public class Main {
     private static void viewReceivedMessagesSub(Scanner scanner, UserService userService, StoreService supplierService) {
         LOGGER.info("Choose the type of user to view messages:");
         LOGGER.info("1. NormalUser");
-        LOGGER.info("2. Supplier");
-        LOGGER.info("Enter your choice: ");
+        LOGGER.info(SUPPLIER_OPTION);
+        LOGGER.info(ENTER_CHOICE_MESSAGE);
 
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
@@ -1182,7 +1215,7 @@ public class Main {
                 }
                 break;
             case 2:
-                LOGGER.info("Enter the ID of the Supplier: ");
+                LOGGER.info(ENTER_SUPPLIER_ID_MESSAGE);
                 int id = scanner.nextInt();
                 scanner.nextLine(); // Consume newline
                 Store supplier = supplierService.getStoreById(id);
@@ -1193,11 +1226,11 @@ public class Main {
                         LOGGER.info("- " + message);
                     }
                 } else {
-                    LOGGER.warning("Supplier not found.");
+                    LOGGER.warning(SUPPLIER_NOT_FOUND_MESSAGE);
                 }
                 break;
             default:
-                LOGGER.warning("Invalid choice.");
+                LOGGER.warning(INVALID_CHOICE_SHORT_MESSAGE);
                 break;
         }
     }
@@ -1207,14 +1240,14 @@ public class Main {
         boolean running = true;
 
         while (running) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Manage Account Information");
-            LOGGER.info("==============================");
-            LOGGER.info("Choose an option:");
+            LOGGER.info(SEPARATOR);
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
             LOGGER.info("1. View Account Information");
             LOGGER.info("2. Update Account Information");
             LOGGER.info("3. Back to Previous Menu");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -1234,7 +1267,7 @@ public class Main {
                     break;
 
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
             }
         }
     }
@@ -1245,7 +1278,7 @@ public class Main {
             LOGGER.info("Account Information:");
             LOGGER.info("Name: " + user.getName());
             LOGGER.info("Password: " + user.getPassword()); // You might want to mask this
-            LOGGER.info("City: " + user.getCity());
+            LOGGER.info(CITY + user.getCity());
             LOGGER.info("Phone Number: " + user.getPhone());
             LOGGER.info("Role: " + user.getRole());
         } else {
@@ -1259,7 +1292,7 @@ public class Main {
 
             LOGGER.info("Update Account Information:");
 
-            LOGGER.info("Enter new name (leave empty to keep current): ");
+            LOGGER.info(ENTER_NEW_NAME_MESSAGE);
             String newName = scanner.nextLine();
             if (!newName.isEmpty()) {
                 user.setName(newName);
@@ -1298,15 +1331,15 @@ public class Main {
         boolean exit = false;
 
         while (!exit) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Communicate with Users and Suppliers");
-            LOGGER.info("==============================");
-            LOGGER.info("Choose an option:");
+            LOGGER.info(SEPARATOR);
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
             LOGGER.info("1. Send a message to a User");
             LOGGER.info("2. Send a message to a OwnerStore");
             LOGGER.info("3. View received messages");
             LOGGER.info("4. Back to Supplier Dashboard");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -1326,7 +1359,7 @@ public class Main {
                     supplierDashboard();
                     break;
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
                     break;
             }
         }
@@ -1338,14 +1371,14 @@ public class Main {
         boolean running = true;
 
         while (running) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Manage Account");
-            LOGGER.info("==============================");
-            LOGGER.info("Choose an option:");
+            LOGGER.info(SEPARATOR);
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
             LOGGER.info("1. View Account Information");
             LOGGER.info("2. Update Account Information");
             LOGGER.info("3. Back to User Dashboard"); // Updated option
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -1362,7 +1395,7 @@ public class Main {
                     normalUserDashboard(user);
                     break;
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
                     break;
             }
         }
@@ -1372,7 +1405,7 @@ public class Main {
         LOGGER.info("Account Information:");
         LOGGER.info("Name: " + user.getName());
         LOGGER.info("Password: " + user.getPassword()); // You might want to mask this
-        LOGGER.info("City: " + user.getCity());
+        LOGGER.info(CITY + user.getCity());
         LOGGER.info("Phone Number: " + user.getPhone());
         LOGGER.info("Role: " + user.getRole());
     }
@@ -1382,7 +1415,7 @@ public class Main {
 
         LOGGER.info("Update Account Information:");
 
-        LOGGER.info("Enter new name (leave empty to keep current): ");
+        LOGGER.info(ENTER_NEW_NAME_MESSAGE);
         String newName = scanner.nextLine();
         if (!newName.isEmpty()) {
             user.setName(newName);
@@ -1411,20 +1444,20 @@ public class Main {
 
     public static void exploreAndBuySweets() {
         Scanner scanner = new Scanner(System.in);
-        LOGGER.info("==============================");
+        LOGGER.info(SEPARATOR);
         LOGGER.info("   Explore and Buy Sweets");
-        LOGGER.info("==============================");
+        LOGGER.info(SEPARATOR);
 
         boolean shopping = true;
 
         while (shopping) {
-            LOGGER.info("Choose an option:");
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
             LOGGER.info("1. Browse all dessert recipes");
             LOGGER.info("2. Search for a dessert recipe");
             LOGGER.info("3. Filter recipes by dietary needs or allergies");
             LOGGER.info("4. Purchase desserts");
             LOGGER.info("5. Go back to the User Dashboard");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
@@ -1491,7 +1524,7 @@ public class Main {
                         LOGGER.info("Thank you for your feedback!");
 
                     } else {
-                        LOGGER.warning("Product not found.");
+                        LOGGER.warning(PRODUCT_NOT_FOUND_MESSAGE);
                     }
                     break;
 
@@ -1500,7 +1533,7 @@ public class Main {
                     break;
 
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
                     break;
             }
         }
@@ -1515,13 +1548,13 @@ public class Main {
         boolean exit = false;
 
         while (!exit) {
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("   Communication Center");
-            LOGGER.info("==============================");
+            LOGGER.info(SEPARATOR);
             LOGGER.info("1. Send a message");
             LOGGER.info("2. View received messages");
             LOGGER.info("3. Back to Dashboard");
-            LOGGER.info("Enter your choice: ");
+            LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -1537,7 +1570,7 @@ public class Main {
                     exit = true;
                     break;
                 default:
-                    LOGGER.warning("Invalid choice. Please try again.");
+                    LOGGER.warning(INVALID_CHOICE_MESSAGE);
                     break;
             }
         }
@@ -1546,9 +1579,9 @@ public class Main {
     private static void sendMessage(Scanner scanner, NormalUser sender) {
         LOGGER.info("Select recipient type:");
         LOGGER.info("1. User");
-        LOGGER.info("2. Supplier");
+        LOGGER.info(SUPPLIER_OPTION);
         LOGGER.info("3. StoreOwner");
-        LOGGER.info("Enter your choice: ");
+        LOGGER.info(ENTER_CHOICE_MESSAGE);
         int recipientType = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
@@ -1570,7 +1603,7 @@ public class Main {
             return;
         }
 
-        LOGGER.info("Enter your message: ");
+        LOGGER.info(ENTER_MESSAGE_MESSAGE);
         String messageContent = scanner.nextLine();
 
         Message message = new Message(sender.getId(), sender.getName(), sender.getRole(), messageContent);

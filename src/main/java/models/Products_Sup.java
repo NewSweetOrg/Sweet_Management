@@ -36,14 +36,6 @@ public class Products_Sup {
         this.id = id;
     }
 
-    public int getStoreOrSupplierId() {
-        return storeOrSupplierId;
-    }
-
-    public void setStoreOrSupplierId(int storeOrSupplierId) {
-        this.storeOrSupplierId = storeOrSupplierId;
-    }
-
     public String getName() {
         return name;
     }
