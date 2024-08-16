@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Handler;
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class Main {
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
@@ -166,7 +167,7 @@ public class Main {
                             loginRole = SUPPLIER;
                             break;
                         case 4:
-                            loginRole = "NormalUser";
+                            loginRole = NORMAL_USER;
                             break;
                         default:
                             LOGGER.warning("Invalid role choice.");
@@ -298,7 +299,9 @@ public class Main {
     private static void viewAllUsers() {
         LOGGER.info("All Users:");
         for (NormalUser user : userList) {
-            LOGGER.info(user.toString());
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info(user.toString());
+            }
         }
     }
 
@@ -366,7 +369,7 @@ public class Main {
             return;
         }
 
-        LOGGER.info("Current user details: " + userToUpdate);
+        LOGGER.info(String.format("Current user details: %s", userToUpdate));
         LOGGER.info("Enter new details (press enter to keep current value):");
 
         LOGGER.info("New name: ");
@@ -426,8 +429,8 @@ public class Main {
                 }
             }
             LOGGER.info("Store: " + store.getName());
-            LOGGER.info(TOTAL_SALES_MESSAGE + totalSales);
-            LOGGER.info("Total Profit: $" + totalProfit);
+            LOGGER.info(String.format("%s%.2f", TOTAL_SALES_MESSAGE, totalSales));
+            LOGGER.info(String.format("Total Profit: $%.2f", totalProfit));
             LOGGER.info(SEPARATOR_LINE);
         }
 
@@ -441,7 +444,7 @@ public class Main {
                 }
             }
             LOGGER.info("Supplier: " + supplier.getName());
-            LOGGER.info(TOTAL_SALES_MESSAGE + totalSales);
+            LOGGER.info(String.format("%s%.2f", TOTAL_SALES_MESSAGE, totalSales));
             LOGGER.info(SEPARATOR_LINE);
         }
     }
@@ -456,7 +459,7 @@ public class Main {
         LOGGER.info("Top 5 Best-Selling Products:");
         for (int i = 0; i < Math.min(5, productList.size()); i++) {
             Products product = productList.get(i);
-            LOGGER.info((i + 1) + ". " + product.getName() + " - Total Sold: " + product.getTotalSold());
+            LOGGER.info(String.format("%d. %s - Total Sold: %d", i + 1, product.getName(), product.getTotalSold()));
         }
     }
 
@@ -520,7 +523,7 @@ public class Main {
             LOGGER.info("2. Add a New Post");
             LOGGER.info("3. Delete a Post");
             LOGGER.info("4. Go Back");
-            LOGGER.info("Choose an option: ");
+            LOGGER.info(CHOOSE_OPTION_MESSAGE);
 
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -587,7 +590,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         LOGGER.info("User Feedback:");
         for (Feedback feedback : feedbackList) {
-            LOGGER.info(feedback.toString());
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info(feedback.toString());
+            }
             LOGGER.info("1. Keep  2. Remove");
             int action = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -776,7 +781,7 @@ public class Main {
             LOGGER.info("Available Posts:");
             int index = 1;
             for (Posts post : posts) {
-                LOGGER.info(index + "-");
+                LOGGER.info(String.format("%d-", index));
                 LOGGER.info(" Title: " + post.getTitle());
                 LOGGER.info(" Tag: " + post.getTag());
                 LOGGER.info(" Description: " + post.getDescription());
@@ -1004,12 +1009,14 @@ public class Main {
             totalProfit += productProfit * product.getTotalSold();
         }
 
-        LOGGER.info(TOTAL_SALES_MESSAGE + totalSales);
-        LOGGER.info("Total Profit: $" + totalProfit);
+        LOGGER.info(String.format("%s%d", TOTAL_SALES_MESSAGE, totalSales));
+        LOGGER.info(String.format("Total Profit: $%d", totalProfit));
 
         LOGGER.info("\nProduct Details:");
         for (Products product : allProducts) {
-            LOGGER.info(product.toString());
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info(product.toString());
+            }
         }
     }
 
@@ -1037,7 +1044,9 @@ public class Main {
                     List<Order> orders = orderService.getAllOrders();
                     LOGGER.info("All Orders:");
                     for (Order order : orders) {
-                        LOGGER.info(order.toString());
+                        if (LOGGER.isLoggable(Level.INFO)) {
+                            LOGGER.info(order.toString());
+                        }
                     }
                     if (orders == null) {
                         LOGGER.warning("The Orders is Empity... ");
@@ -1090,7 +1099,7 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    sendMessageToNormalUser(scanner, userService);
+                    sendMessageToNormalUser();
                     break;
                 case 2:
                     sendMessageToSupplier(scanner, supplierService);
@@ -1109,7 +1118,7 @@ public class Main {
         }
     }
 
-    private static void sendMessageToNormalUser(Scanner scanner, UserService userService) {
+    private static void sendMessageToNormalUser() {
         // Implementation here...
     }
 
@@ -1123,13 +1132,13 @@ public class Main {
             LOGGER.info(ENTER_MESSAGE_MESSAGE);
             String message = scanner.nextLine();
             supplier.getMessage().add(message);
-            LOGGER.info("Message sent to Supplier ID " + id);
+            LOGGER.info(String.format("Message sent to Supplier ID %d", id));
         } else {
             LOGGER.warning(SUPPLIER_NOT_FOUND_MESSAGE);
         }
     }
 
-    private static void sendMessageToOwner(Scanner scanner, StoreService supplierService) {
+    private static void sendMessageToOwner(Scanner scanner) {
         LOGGER.info("Enter the ID of the Owner: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline
@@ -1139,7 +1148,7 @@ public class Main {
             LOGGER.info(ENTER_MESSAGE_MESSAGE);
             String message = scanner.nextLine();
             supplie.getMessage().add(message);
-            LOGGER.info("Message sent to Owner ID " + id);
+            LOGGER.info(String.format("Message sent to Owner ID %d", id));
         } else {
             LOGGER.warning("Owner not found.");
         }
@@ -1161,9 +1170,9 @@ public class Main {
                 NormalUser user = userService.getNormalUser(username);
 
                 if (user != null) {
-                    LOGGER.info("Messages for " + username + ":");
+                    LOGGER.info(String.format("Messages for %s:", username));
                     for (String message : user.getMessage()) {
-                        LOGGER.info("- " + message);
+                        LOGGER.info(String.format("- %s", message));
                     }
                 } else {
                     LOGGER.warning("NormalUser not found.");
@@ -1176,9 +1185,9 @@ public class Main {
                 Supplier supplier = supplierService.getSupplierById(id);
 
                 if (supplier != null) {
-                    LOGGER.info("Messages for Supplier ID " + id + ":");
+                    LOGGER.info(String.format("Messages for Supplier ID %d:", id));
                     for (String message : supplier.getMessage()) {
-                        LOGGER.info("- " + message);
+                        LOGGER.info(String.format("- %s", message));
                     }
                 } else {
                     LOGGER.warning(SUPPLIER_NOT_FOUND_MESSAGE);
@@ -1206,9 +1215,9 @@ public class Main {
                 NormalUser user = userService.getNormalUser(username);
 
                 if (user != null) {
-                    LOGGER.info("Messages for " + username + ":");
+                    LOGGER.info(String.format("Messages for %s:", username));
                     for (String message : user.getMessage()) {
-                        LOGGER.info("- " + message);
+                        LOGGER.info(String.format("- %s", message));
                     }
                 } else {
                     LOGGER.warning("NormalUser not found.");
@@ -1221,9 +1230,9 @@ public class Main {
                 Store supplier = supplierService.getStoreById(id);
 
                 if (supplier != null) {
-                    LOGGER.info("Messages for Supplier ID " + id + ":");
+                    LOGGER.info(String.format("Messages for Supplier ID %d:", id));
                     for (String message : supplier.getMessage()) {
-                        LOGGER.info("- " + message);
+                        LOGGER.info(String.format("- %s", message));
                     }
                 } else {
                     LOGGER.warning(SUPPLIER_NOT_FOUND_MESSAGE);
@@ -1346,10 +1355,10 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    sendMessageToNormalUser(scanner, userService);
+                    sendMessageToNormalUser();
                     break;
                 case 2:
-                    sendMessageToOwner(scanner, supplierService);
+                    sendMessageToOwner(scanner);
                     break;
                 case 3:
                     viewReceivedMessagesSub(scanner, userService, supplierService);
@@ -1504,7 +1513,7 @@ public class Main {
                             LOGGER.info("A 30% discount has been applied!");
                         }
 
-                        LOGGER.info("Purchased " + product.getName() + " for $" + price);
+                        LOGGER.info(String.format("Purchased %s for $%d", product.getName(), price));
 
                         // Send email notification
                         String recipient = "amer23102002@gmail.com";
@@ -1582,7 +1591,7 @@ public class Main {
         LOGGER.info(SUPPLIER_OPTION);
         LOGGER.info("3. StoreOwner");
         LOGGER.info(ENTER_CHOICE_MESSAGE);
-        int recipientType = scanner.nextInt();
+        scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
         LOGGER.info("Enter recipient name:");
@@ -1671,7 +1680,9 @@ public class Main {
         boolean feedbackFound = false;
         for (Feedback feedback : feedbackList) {
             if (feedback.getProductId() == productId) {
-                LOGGER.info(feedback.toString());
+                if (LOGGER.isLoggable(Level.INFO)) {
+                    LOGGER.info(feedback.toString());
+                }
                 feedbackFound = true;
             }
         }
