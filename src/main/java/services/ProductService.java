@@ -1,7 +1,6 @@
 package services;
 
 import models.Products;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,19 +37,27 @@ public class ProductService {
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getId() == id) {
                 products.set(i, updatedProduct);
-                LOGGER.info(String.format("Product with ID %d updated successfully.", id));
+                if (LOGGER.isLoggable(Level.INFO)) {
+                    LOGGER.info(String.format("Product with ID %d updated successfully.", id));
+                }
                 return;
             }
         }
-        LOGGER.warning(String.format("Product with ID %d not found.", id));
+        if (LOGGER.isLoggable(Level.WARNING)) {
+            LOGGER.warning(String.format("Product with ID %d not found.", id));
+        }
     }
 
     public void printAllProducts() {
         if (products.isEmpty()) {
-            LOGGER.info("No products available.");
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info("No products available.");
+            }
         } else {
             for (Products product : products) {
-                LOGGER.info(product.toString()); // Assuming the Products class has a meaningful toString() method
+                if (LOGGER.isLoggable(Level.INFO)) {
+                    LOGGER.info(product.toString()); // Assuming the Products class has a meaningful toString() method
+                }
             }
         }
     }
@@ -58,9 +65,13 @@ public class ProductService {
     public void removeProduct(int id) {
         boolean removed = products.removeIf(product -> product.getId() == id);
         if (removed) {
-            LOGGER.info(String.format("Product with ID %d removed successfully.", id));
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info(String.format("Product with ID %d removed successfully.", id));
+            }
         } else {
-            LOGGER.warning(String.format("Product with ID %d not found.", id));
+            if (LOGGER.isLoggable(Level.WARNING)) {
+                LOGGER.warning(String.format("Product with ID %d not found.", id));
+            }
         }
     }
 
@@ -71,13 +82,16 @@ public class ProductService {
                 matchingProducts.add(product);
             }
         }
-
         if (matchingProducts.isEmpty()) {
-            LOGGER.info("No products found matching the search query.");
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info("No products found matching the search query.");
+            }
         } else {
-            LOGGER.info("Search Results:");
-            for (Products product : matchingProducts) {
-                LOGGER.info(String.format("ID: %d, Name: %s, Price: $%d", product.getId(), product.getName(), product.getPrice()));
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info("Search Results:");
+                for (Products product : matchingProducts) {
+                    LOGGER.info(String.format("ID: %d, Name: %s, Price: $%d", product.getId(), product.getName(), product.getPrice()));
+                }
             }
         }
     }
@@ -89,13 +103,16 @@ public class ProductService {
                 filteredProducts.add(product);
             }
         }
-
         if (filteredProducts.isEmpty()) {
-            LOGGER.info("No products found matching the dietary need or allergy.");
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info("No products found matching the dietary need or allergy.");
+            }
         } else {
-            LOGGER.info("Filtered Products:");
-            for (Products product : filteredProducts) {
-                LOGGER.info(String.format("ID: %d, Name: %s, Price: $%d", product.getId(), product.getName(), product.getPrice()));
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info("Filtered Products:");
+                for (Products product : filteredProducts) {
+                    LOGGER.info(String.format("ID: %d, Name: %s, Price: $%d", product.getId(), product.getName(), product.getPrice()));
+                }
             }
         }
     }

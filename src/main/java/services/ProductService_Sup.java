@@ -37,19 +37,27 @@ public class ProductService_Sup {
         for (int i = 0; i < productsSup.size(); i++) {
             if (productsSup.get(i).getId() == id) {
                 productsSup.set(i, updatedProduct);
-                LOGGER.info(String.format("Product with ID %d updated successfully.", id));
+                if (LOGGER.isLoggable(Level.INFO)) {
+                    LOGGER.info(String.format("Product with ID %d updated successfully.", id));
+                }
                 return;
             }
         }
-        LOGGER.warning(String.format("Product with ID %d not found.", id));
+        if (LOGGER.isLoggable(Level.WARNING)) {
+            LOGGER.warning(String.format("Product with ID %d not found.", id));
+        }
     }
 
     public void printAllProducts_Sup() {
         if (productsSup.isEmpty()) {
-            LOGGER.info("No Products_Sup available.");
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info("No Products_Sup available.");
+            }
         } else {
             for (Products_Sup product : productsSup) {
-                LOGGER.info(product.toString()); // Assuming the Products_Sup class has a meaningful toString() method
+                if (LOGGER.isLoggable(Level.INFO)) {
+                    LOGGER.info(product.toString()); // Assuming the Products_Sup class has a meaningful toString() method
+                }
             }
         }
     }
@@ -57,9 +65,13 @@ public class ProductService_Sup {
     public void removeProduct(int id) {
         boolean removed = productsSup.removeIf(product -> product.getId() == id);
         if (removed) {
-            LOGGER.info(String.format("Product with ID %d removed successfully.", id));
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info(String.format("Product with ID %d removed successfully.", id));
+            }
         } else {
-            LOGGER.warning(String.format("Product with ID %d not found.", id));
+            if (LOGGER.isLoggable(Level.WARNING)) {
+                LOGGER.warning(String.format("Product with ID %d not found.", id));
+            }
         }
     }
 }
