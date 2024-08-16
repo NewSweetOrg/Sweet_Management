@@ -28,12 +28,8 @@ public class ReportService {
     }
 
     // Generates a report listing the best-selling products for each store
-    public Map<String, List<Products>> generateBestSellingProductsReport(List<Store> stores) {
+    public Map<String, List<Products>> generateBestSellingProductsReport() {
         Map<String, List<Products>> bestSellingProductsReport = new HashMap<>();
-
-        for (Store store : stores) {
-            //       bestSellingProductsReport.put(store.getName(), store.getBestSellingProducts());  // Getting the best-selling products for each store
-        }
 
         return bestSellingProductsReport;
     }

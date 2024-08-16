@@ -52,7 +52,7 @@ public class MonitorAndReportSteps {
 
     @When("the admin requests a report on best-selling products")
     public void the_admin_requests_a_report_on_best_selling_products() {
-        bestSellingProductsReport = reportService.generateBestSellingProductsReport(storeService.getAllStores());
+        bestSellingProductsReport = reportService.generateBestSellingProductsReport();
     }
 
     @Then("the system should generate a report")

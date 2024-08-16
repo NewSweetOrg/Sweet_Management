@@ -13,8 +13,6 @@ import services.StoreService;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
-
 public class PurchaseDessertSteps {
     private NormalUserService userService = new NormalUserService();
     private ProductService productService = new ProductService();

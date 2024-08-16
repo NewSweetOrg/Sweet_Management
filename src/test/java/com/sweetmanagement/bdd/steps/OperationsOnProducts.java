@@ -4,7 +4,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import models.NormalUser;
 import models.Products;
 import models.Store;
 
@@ -13,7 +12,6 @@ import services.ProductService;
 import services.StoreService;
 
 import static org.junit.Assert.*;
-import java.util.List;
 
 public class OperationsOnProducts {
 

@@ -1,7 +1,5 @@
 package models;
 
-import models.*;
-
 import java.util.LinkedList;
 
 public class Products {
