@@ -31,8 +31,9 @@ public class NormalUserPostSteps {
     @When("I add a post with title {string}, tag {string}, and description {string}")
     public void iAddAPostWithTitleTagAndDescription(String title, String tag, String description) {
         assertNotNull("Signed-In User should not be null before adding a post", signedInUser);
-        post = new Posts(1, signedInUser.getId(), title, tag, description);
-        postService.addPost(post);
+        Posts newPost = new Posts(1, signedInUser.getId(), title, tag, description); // Renamed variable
+        postService.addPost(newPost);
+        post = newPost; // Assign the newly created post to the class field
     }
 
     @Then("the post should be created successfully")
@@ -52,8 +53,8 @@ public class NormalUserPostSteps {
     @Then("I should see all the posts with the title {string}")
     public void iShouldSeeAllThePostsWithTheTitle(String title) {
         assertNotNull("Search Results should not be null", searchResults);
-        for (Posts post : searchResults) {
-            assertEquals("Title should match", title, post.getTitle());
+        for (Posts resultPost : searchResults) {
+            assertEquals("Title should match", title, resultPost.getTitle());
         }
     }
 
@@ -65,8 +66,8 @@ public class NormalUserPostSteps {
     @Then("I should see all the posts with the tag {string}")
     public void iShouldSeeAllThePostsWithTheTag(String tag) {
         assertNotNull("Search Results should not be null", searchResults);
-        for (Posts post : searchResults) {
-            assertEquals("Tag should match", tag, post.getTag());
+        for (Posts resultPost : searchResults) {
+            assertEquals("Tag should match", tag, resultPost.getTag());
         }
     }
 }

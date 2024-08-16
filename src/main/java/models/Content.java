@@ -3,11 +3,9 @@ package models;
 
 public class Content {
     private String title;
-    private String content;
 
-    public Content(String title, String content) {
+    public Content(String title, String contents) {
         this.title = title;
-        this.content = content;
     }
 
     public String getTitle() {

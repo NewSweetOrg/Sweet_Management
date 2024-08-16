@@ -5,7 +5,7 @@ import java.util.logging.LogRecord;
 
 public class SimpleFormatter extends Formatter {
     @Override
-    public String format(LogRecord record) {
-        return record.getMessage() + "\n";
+    public String format(LogRecord logRecord) {
+        return logRecord.getMessage() + "\n";
     }
 }

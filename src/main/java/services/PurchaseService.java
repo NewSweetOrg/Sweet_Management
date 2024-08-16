@@ -24,8 +24,6 @@ public class PurchaseService {
             return false; // Store not found
         }
 
-        int price = product.getPrice();
-
         // Simulate purchase logic
         store.setSales(store.getSales() + product.getPrice());
         product.setTotalSold(product.getTotalSold() + 1);  // Increment total sold by 1

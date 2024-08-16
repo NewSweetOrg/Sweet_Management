@@ -53,7 +53,6 @@ public class OperationsOnProducts {
     public void theProductShouldBeAddedSuccessfully() {
         Products addedProduct = productService.getProductById(1);
         assertNotNull("Product should be added successfully.", addedProduct);
-      //  assertEquals("Product name should match.", "Chocolate Cake", addedProduct.getName());
     }
 
  

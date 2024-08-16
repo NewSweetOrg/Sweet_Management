@@ -29,11 +29,6 @@ public class Products {
         this(id, 0, name, price, totalSold, dietaryInfo); // Using another constructor
     }
 
-    // Getters and Setters
-    public int getStoreId() {
-        return storeOrSupplierId;
-    }
-
     public int getId() {
         return id;
     }

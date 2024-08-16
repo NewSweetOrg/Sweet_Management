@@ -9,12 +9,12 @@ public class Feedback {
     private String username;
     private int productId;
 
-    private LinkedList<String> feedback;
+    private LinkedList<String> feedbacks;
 
-    public Feedback(String username, int productId, LinkedList<String> feedback) {
+    public Feedback(String username, int productId, LinkedList<String> feedbacks) {
         this.username = username;
         this.productId = productId;
-        this.feedback = feedback;
+        this.feedbacks = feedbacks;
     }
 
 
@@ -33,10 +33,6 @@ public class Feedback {
         return productId;
     }
 
-    public LinkedList<String> getFeedback() {
-        return feedback;
-    }
-
 
     public String getId() {
         return id;
@@ -50,10 +46,6 @@ public class Feedback {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public boolean isReviewed() {
         return reviewed;
     }
@@ -63,7 +55,8 @@ public class Feedback {
     }
 
     @Override
+
     public String toString() {
-        return "Feedback from " + username + ": " + feedback;
+        return "Feedback from " + username + ": " + feedbacks;
     }
 }

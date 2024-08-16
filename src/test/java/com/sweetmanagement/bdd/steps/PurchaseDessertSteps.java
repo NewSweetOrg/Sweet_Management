@@ -24,7 +24,6 @@ public class PurchaseDessertSteps {
     private boolean purchaseSuccessful;
     private Products product;
     private Store store;
-    private List<Products> availableProducts;
 
     @Given("I am inside the system as user {string}")
     public void iAmInsideTheSystemAsUser(String username) {
@@ -45,7 +44,7 @@ public class PurchaseDessertSteps {
 
     @When("I view all available products from stores")
     public void iViewAllAvailableProductsFromStores() {
-        availableProducts = productService.getProductsFromStores(storeService);
+        productService.getProductsFromStores(storeService);
     }
 
     @When("I choose the product with ID {int} to purchase")

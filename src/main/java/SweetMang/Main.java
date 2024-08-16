@@ -424,7 +424,7 @@ public class Main {
             double totalSales = 0;
             double totalProfit = 0;
             for (Products product : productList) {
-                if (product.getStoreId() == store.getId()) {
+                if (product.getStoreOrSupplierId() == store.getId()) {
                     totalSales += product.getPrice() * product.getTotalSold();
                     totalProfit += product.getPrice() * product.getTotalSold();
                 }
