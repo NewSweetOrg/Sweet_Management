@@ -19,13 +19,13 @@ public class ContentManagementSteps {
 
     @Given("existing recipes and posts")
     public void existing_recipes_and_posts() {
-             contentService.addContent(new Content("Existing Recipe", "Existing recipe content"));
-        contentService.addContent(new Content("Existing Post", "Existing post content"));
+             contentService.addContent(new Content("Existing Recipe"));
+        contentService.addContent(new Content("Existing Post"));
     }
 
     @When("the admin adds a new recipe with title {string} and content {string}")
     public void the_admin_adds_a_new_recipe_with_title_and_content(String title, String content) {
-        newRecipe = new Content(title, content);
+        newRecipe = new Content(title);
         contentService.addContent(newRecipe);
     }
 

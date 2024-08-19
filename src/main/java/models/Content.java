@@ -4,7 +4,7 @@ package models;
 public class Content {
     private String title;
 
-    public Content(String title, String contents) {
+    public Content(String title) {
         this.title = title;
     }
 
