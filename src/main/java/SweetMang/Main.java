@@ -1630,7 +1630,7 @@ public class Main {
         NormalUser recipient = null;
 
         // Search for the recipient in the allUsers list by name
-        for (NormalUser user : NormalUser.allUsers) {
+        for (NormalUser user : NormalUser.getAllUsers()) {
             if (user.getName().equalsIgnoreCase(recipientIdentifier)) {
                 recipient = user;
                 break;

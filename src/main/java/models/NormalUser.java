@@ -9,10 +9,10 @@ public class NormalUser extends GeneralUser {
     private String city;
 
     private static int nextId = 1;
-    private LinkedList<String> message;
+    private final LinkedList<String> message;
 
     // Static list to store all NormalUser instances
-    public static LinkedList<NormalUser> allUsers = new LinkedList<>();
+    private static final LinkedList<NormalUser> allUsers = new LinkedList<>();
 
     // Parameterized constructor
     public NormalUser(int id, String name, String password, String city, String phone, String role) {
@@ -25,7 +25,7 @@ public class NormalUser extends GeneralUser {
         this.message = new LinkedList<>();
 
         // Add the newly created user to the allUsers list
-        allUsers.add(this);
+        getAllUsers().add(this);
     }
 
     // Parameterized constructor
@@ -39,7 +39,11 @@ public class NormalUser extends GeneralUser {
         this.message = new LinkedList<>();
 
         // Add the newly created user to the allUsers list
-        allUsers.add(this);
+        getAllUsers().add(this);
+    }
+
+    public static LinkedList<NormalUser> getAllUsers() {
+        return allUsers;
     }
 
 
