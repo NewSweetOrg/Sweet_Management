@@ -1,12 +1,10 @@
 services\NormalUserService.class
-services\ContentManagementService.class
 models\Feedback.class
 models\NormalUser.class
 models\Products.class
 services\SupplierService.class
 services\MessagingService.class
 models\Content.class
-models\Admin.class
 services\ReportService.class
 services\ContentService.class
 services\UserService.class
@@ -20,4 +18,3 @@ services\PostService.class
 services\PurchaseService.class
 models\Supplier.class
 models\GeneralUser.class
-models\Recipe.class
