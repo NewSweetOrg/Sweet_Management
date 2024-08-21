@@ -1,90 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.sweetmanagement.bdd.steps.acceptTest" time="2.656" tests="28" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.sweetmanagement.bdd.steps.acceptTest" time="1.272" tests="28" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\Qais\Desktop\univ\Software\Sweet_Management\target\test-classes;C:\Users\Qais\Desktop\univ\Software\Sweet_Management\target\classes;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-java\6.10.4\cucumber-java-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-core\6.10.4\cucumber-core-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-gherkin\6.10.4\cucumber-gherkin-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-gherkin-messages\6.10.4\cucumber-gherkin-messages-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\messages\15.0.0\messages-15.0.0.jar;C:\Users\Qais\.m2\repository\io\cucumber\tag-expressions\3.0.1\tag-expressions-3.0.1.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-expressions\10.3.0\cucumber-expressions-10.3.0.jar;C:\Users\Qais\.m2\repository\io\cucumber\datatable\3.5.0\datatable-3.5.0.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-plugin\6.10.4\cucumber-plugin-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\docstring\6.10.4\docstring-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\html-formatter\13.0.0\html-formatter-13.0.0.jar;C:\Users\Qais\.m2\repository\io\cucumber\create-meta\4.0.0\create-meta-4.0.0.jar;C:\Users\Qais\.m2\repository\org\apiguardian\apiguardian-api\1.1.1\apiguardian-api-1.1.1.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-junit\6.10.4\cucumber-junit-6.10.4.jar;C:\Users\Qais\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Qais\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Qais\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;C:\Users\Qais\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;"/>
+    <property name="java.class.path" value="C:\Users\HP\IdeaProjects\Sweet_Management\target\test-classes;C:\Users\HP\IdeaProjects\Sweet_Management\target\classes;C:\Users\HP\.m2\repository\io\cucumber\cucumber-java\6.10.4\cucumber-java-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-core\6.10.4\cucumber-core-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-gherkin\6.10.4\cucumber-gherkin-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-gherkin-messages\6.10.4\cucumber-gherkin-messages-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\messages\15.0.0\messages-15.0.0.jar;C:\Users\HP\.m2\repository\io\cucumber\tag-expressions\3.0.1\tag-expressions-3.0.1.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-expressions\10.3.0\cucumber-expressions-10.3.0.jar;C:\Users\HP\.m2\repository\io\cucumber\datatable\3.5.0\datatable-3.5.0.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-plugin\6.10.4\cucumber-plugin-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\docstring\6.10.4\docstring-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\html-formatter\13.0.0\html-formatter-13.0.0.jar;C:\Users\HP\.m2\repository\io\cucumber\create-meta\4.0.0\create-meta-4.0.0.jar;C:\Users\HP\.m2\repository\org\apiguardian\apiguardian-api\1.1.1\apiguardian-api-1.1.1.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-junit\6.10.4\cucumber-junit-6.10.4.jar;C:\Users\HP\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\HP\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\HP\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;C:\Users\HP\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
-    <property name="user.timezone" value="Asia/Hebron"/>
+    <property name="user.timezone" value="Asia/Jerusalem"/>
     <property name="os.name" value="Windows 11"/>
     <property name="java.vm.specification.version" value="21"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
-    <property name="sun.boot.library.path" value="C:\Users\Qais\.jdks\openjdk-21.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\Qais\AppData\Local\Temp\surefire3429441449638588699\surefirebooter14514884240299564934.jar C:\Users\Qais\AppData\Local\Temp\surefire3429441449638588699 2024-08-15T13-58-39_098-jvmRun1 surefire3308648239156415986tmp surefire_08420319674971232845tmp"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
+    <property name="sun.java.command" value="C:\Users\HP\AppData\Local\Temp\surefire8165794575411261633\surefirebooter2813017833515438193.jar C:\Users\HP\AppData\Local\Temp\surefire8165794575411261633 2024-08-21T19-53-39_198-jvmRun1 surefire8335501658939448347tmp surefire_05361931668406440869tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\Qais\Desktop\univ\Software\Sweet_Management\target\test-classes;C:\Users\Qais\Desktop\univ\Software\Sweet_Management\target\classes;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-java\6.10.4\cucumber-java-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-core\6.10.4\cucumber-core-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-gherkin\6.10.4\cucumber-gherkin-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-gherkin-messages\6.10.4\cucumber-gherkin-messages-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\messages\15.0.0\messages-15.0.0.jar;C:\Users\Qais\.m2\repository\io\cucumber\tag-expressions\3.0.1\tag-expressions-3.0.1.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-expressions\10.3.0\cucumber-expressions-10.3.0.jar;C:\Users\Qais\.m2\repository\io\cucumber\datatable\3.5.0\datatable-3.5.0.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-plugin\6.10.4\cucumber-plugin-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\docstring\6.10.4\docstring-6.10.4.jar;C:\Users\Qais\.m2\repository\io\cucumber\html-formatter\13.0.0\html-formatter-13.0.0.jar;C:\Users\Qais\.m2\repository\io\cucumber\create-meta\4.0.0\create-meta-4.0.0.jar;C:\Users\Qais\.m2\repository\org\apiguardian\apiguardian-api\1.1.1\apiguardian-api-1.1.1.jar;C:\Users\Qais\.m2\repository\io\cucumber\cucumber-junit\6.10.4\cucumber-junit-6.10.4.jar;C:\Users\Qais\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Qais\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Qais\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;C:\Users\Qais\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\HP\IdeaProjects\Sweet_Management\target\test-classes;C:\Users\HP\IdeaProjects\Sweet_Management\target\classes;C:\Users\HP\.m2\repository\io\cucumber\cucumber-java\6.10.4\cucumber-java-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-core\6.10.4\cucumber-core-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-gherkin\6.10.4\cucumber-gherkin-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-gherkin-messages\6.10.4\cucumber-gherkin-messages-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\messages\15.0.0\messages-15.0.0.jar;C:\Users\HP\.m2\repository\io\cucumber\tag-expressions\3.0.1\tag-expressions-3.0.1.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-expressions\10.3.0\cucumber-expressions-10.3.0.jar;C:\Users\HP\.m2\repository\io\cucumber\datatable\3.5.0\datatable-3.5.0.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-plugin\6.10.4\cucumber-plugin-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\docstring\6.10.4\docstring-6.10.4.jar;C:\Users\HP\.m2\repository\io\cucumber\html-formatter\13.0.0\html-formatter-13.0.0.jar;C:\Users\HP\.m2\repository\io\cucumber\create-meta\4.0.0\create-meta-4.0.0.jar;C:\Users\HP\.m2\repository\org\apiguardian\apiguardian-api\1.1.1\apiguardian-api-1.1.1.jar;C:\Users\HP\.m2\repository\io\cucumber\cucumber-junit\6.10.4\cucumber-junit-6.10.4.jar;C:\Users\HP\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\HP\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\HP\.m2\repository\com\sun\mail\javax.mail\1.6.2\javax.mail-1.6.2.jar;C:\Users\HP\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\Qais"/>
+    <property name="user.home" value="C:\Users\HP"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.version.date" value="2023-10-17"/>
-    <property name="java.home" value="C:\Users\Qais\.jdks\openjdk-21.0.1"/>
+    <property name="java.version.date" value="2024-01-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-21"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\Qais\Desktop\univ\Software\Sweet_Management"/>
+    <property name="basedir" value="C:\Users\HP\IdeaProjects\Sweet_Management"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Qais\AppData\Local\Temp\surefire3429441449638588699\surefirebooter14514884240299564934.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\HP\AppData\Local\Temp\surefire8165794575411261633\surefirebooter2813017833515438193.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="21.0.1+12-29"/>
-    <property name="user.name" value="Qais"/>
+    <property name="java.runtime.version" value="21.0.2+13-LTS-58"/>
+    <property name="user.name" value="HP"/>
     <property name="stdout.encoding" value="Cp1252"/>
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
-    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
-    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="localRepository" value="C:\Users\Qais\.m2\repository"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\HP\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\Qais\AppData\Local\Temp\"/>
-    <property name="idea.version" value="2023.3.1"/>
-    <property name="java.version" value="21.0.1"/>
-    <property name="user.dir" value="C:\Users\Qais\Desktop\univ\Software\Sweet_Management"/>
+    <property name="java.io.tmpdir" value="C:\Users\HP\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2023.3.7"/>
+    <property name="java.version" value="21.0.2"/>
+    <property name="user.dir" value="C:\Users\HP\IdeaProjects\Sweet_Management"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Users\Qais\.jdks\openjdk-21.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Java\jdk-22\bin;C:\Program Files\Git\cmd;C:\Users\Qais\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Qais\AppData\Local\Programs\Python\Python312\;C:\Users\Qais\AppData\Local\Microsoft\WindowsApps;C:\Users\Qais\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files (x86)\Tencent\QQGameTempest\Hall.58036\;C:\Users\Qais\AppData\Local\Programs\Ollama;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Java\jdk-21\bin;C:\Program Files\Git\cmd;C:\Program Files\PostgreSQL\16\bin;C:\Users\HP\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\CLion 2022.3.3\bin;;;C:\Users\HP\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\HP\.dotnet\tools;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.3.2\bin;;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.version" value="21.0.1+12-29"/>
+    <property name="java.vm.version" value="21.0.2+13-LTS-58"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="View posts" classname="Posts and Feedback Management" time="0.468"/>
-  <testcase name="Delete a post" classname="Posts and Feedback Management" time="0.031"/>
-  <testcase name="View feedback" classname="Posts and Feedback Management" time="0.025"/>
-  <testcase name="Delete feedback" classname="Posts and Feedback Management" time="0.02"/>
-  <testcase name="Display number of registered users by city" classname="Gather and display statistics on registered users by City" time="0.021"/>
-  <testcase name="Update Store owner account details" classname="Account Management" time="0.023"/>
-  <testcase name="Update Supplier account details" classname="Account Management" time="0.024"/>
-  <testcase name="Messaging between users and suppliers" classname="Messaging feature" time="0.015"/>
-  <testcase name="Messaging between users and store" classname="Messaging feature" time="0.012"/>
-  <testcase name="Messaging between store and suppliers" classname="Messaging feature" time="0.012"/>
-  <testcase name="Display all sales" classname="Monitor Sales and best selling" time="0.021"/>
-  <testcase name="Display best-selling product" classname="Monitor Sales and best selling" time="0.009"/>
-  <testcase name="Monitor profits and generate financial reports" classname="Monitor and Report" time="0.013"/>
-  <testcase name="Identify best-selling products in each store" classname="Monitor and Report" time="0.014"/>
-  <testcase name="Sign up for a new account" classname="Normal User Management" time="0.008"/>
-  <testcase name="Sign in to the platform" classname="Normal User Management" time="0.014"/>
-  <testcase name="Manage personal account" classname="Normal User Management" time="0.011"/>
-  <testcase name="Post personal dessert creations" classname="Normal User Post" time="0.014"/>
-  <testcase name="Search for dessert posts by title" classname="Normal User Post" time="0.011"/>
-  <testcase name="Search for dessert posts by tag" classname="Normal User Post" time="0.011"/>
-  <testcase name="Add a new product" classname="Product Management" time="0.015"/>
-  <testcase name="update an existing product" classname="Product Management" time="0.013"/>
-  <testcase name="Remove a product" classname="Product Management" time="0.018"/>
-  <testcase name="Purchase desserts directly from store owners" classname="Purchase Desserts" time="0.034"/>
-  <testcase name="Add a new store owner" classname="User Management" time="0.009"/>
-  <testcase name="Add a new raw material supplier" classname="User Management" time="0.017"/>
-  <testcase name="Remove an existing store owner" classname="User Management" time="0.015"/>
-  <testcase name="Remove an existing raw material supplier" classname="User Management" time="0.013"/>
+  <testcase name="View posts" classname="Posts and Feedback Management" time="0.194"/>
+  <testcase name="Delete a post" classname="Posts and Feedback Management" time="0.013"/>
+  <testcase name="View feedback" classname="Posts and Feedback Management" time="0.018"/>
+  <testcase name="Delete feedback" classname="Posts and Feedback Management" time="0.015"/>
+  <testcase name="Display number of registered users by city" classname="Gather and display statistics on registered users by City" time="0.016"/>
+  <testcase name="Update Store owner account details" classname="Account Management" time="0.014"/>
+  <testcase name="Update Supplier account details" classname="Account Management" time="0.012"/>
+  <testcase name="Messaging between users and suppliers" classname="Messaging feature" time="0.01"/>
+  <testcase name="Messaging between users and store" classname="Messaging feature" time="0.008"/>
+  <testcase name="Messaging between store and suppliers" classname="Messaging feature" time="0.006"/>
+  <testcase name="Display all sales" classname="Monitor Sales and best selling" time="0.01"/>
+  <testcase name="Display best-selling product" classname="Monitor Sales and best selling" time="0.01"/>
+  <testcase name="Monitor profits and generate financial reports" classname="Monitor and Report" time="0.008"/>
+  <testcase name="Identify best-selling products in each store" classname="Monitor and Report" time="0.007"/>
+  <testcase name="Sign up for a new account" classname="Normal User Management" time="0.007"/>
+  <testcase name="Sign in to the platform" classname="Normal User Management" time="0.006"/>
+  <testcase name="Manage personal account" classname="Normal User Management" time="0.005"/>
+  <testcase name="Post personal dessert creations" classname="Normal User Post" time="0.012"/>
+  <testcase name="Search for dessert posts by title" classname="Normal User Post" time="0.01"/>
+  <testcase name="Search for dessert posts by tag" classname="Normal User Post" time="0.01"/>
+  <testcase name="Add a new product" classname="Product Management" time="0.01"/>
+  <testcase name="update an existing product" classname="Product Management" time="0.028"/>
+  <testcase name="Remove a product" classname="Product Management" time="0.01"/>
+  <testcase name="Purchase desserts directly from store owners" classname="Purchase Desserts" time="0.019"/>
+  <testcase name="Add a new store owner" classname="User Management" time="0.008"/>
+  <testcase name="Add a new raw material supplier" classname="User Management" time="0.005"/>
+  <testcase name="Remove an existing store owner" classname="User Management" time="0.009"/>
+  <testcase name="Remove an existing raw material supplier" classname="User Management" time="0.007"/>
 </testsuite>

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.sweetmanagement.bdd.steps.acceptTest
 -------------------------------------------------------------------------------
-Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.656 s - in com.sweetmanagement.bdd.steps.acceptTest
+Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.272 s - in com.sweetmanagement.bdd.steps.acceptTest
