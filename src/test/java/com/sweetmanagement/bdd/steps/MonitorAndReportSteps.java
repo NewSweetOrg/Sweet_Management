@@ -2,6 +2,7 @@ package com.sweetmanagement.bdd.steps;
 
 import models.Products;
 import models.Store;
+import models.StoreBuilder;
 import services.ReportService;
 import services.StoreService;
 import io.cucumber.java.en.Given;
@@ -21,8 +22,8 @@ public class MonitorAndReportSteps {
 
     @Given("stores with sales data")
     public void stores_with_sales_data() {
-        Store store1 = new Store("user1", "pass1", "admin", 1, "Store1", 1234567890, "Address1", 100);
-        Store store2= new Store("user2", "pass1", "admin", 1, "Store1", 1234567890, "Address1", 100);
+        Store store1 = new StoreBuilder().setUsername("user1").setPassword("pass1").setRole("admin").setId(1).setName("Store1").setPhone(1234567890).setAddress("Address1").setSales(100).createStore();
+        Store store2= new StoreBuilder().setUsername("user2").setPassword("pass1").setRole("admin").setId(1).setName("Store1").setPhone(1234567890).setAddress("Address1").setSales(100).createStore();
         
         Products productA = new Products(1, 1, "ProductA", 10, 50,""); // Example sales
         Products productC = new Products(2, 2, "ProductB", 20, 70,""); // Example sales

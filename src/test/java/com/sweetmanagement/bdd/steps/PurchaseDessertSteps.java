@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import models.NormalUser;
 import models.Products;
 import models.Store;
+import models.StoreBuilder;
 import services.NormalUserService;
 import services.ProductService;
 import services.PurchaseService;
@@ -33,7 +34,7 @@ public class PurchaseDessertSteps {
 
     @Given("there is a dessert {string} priced at {int} available from store owner {string}")
     public void thereIsADessertPricedAtAvailableFromStoreOwner(String productName, int price, String storeOwnerName) {
-        store = new Store("store1", "pass123", "store", 1, storeOwnerName, 123456789, "123 Street", 0);
+        store = new StoreBuilder().setUsername("store1").setPassword("pass123").setRole("store").setId(1).setName(storeOwnerName).setPhone(123456789).setAddress("123 Street").setSales(0).createStore();
         storeService.addStore(store);
         product = new Products(1, store.getId(), productName, price, 10,"");
         productService.addProduct(product);

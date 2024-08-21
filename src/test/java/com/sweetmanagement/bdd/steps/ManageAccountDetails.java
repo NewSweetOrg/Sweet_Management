@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import models.Store;
+import models.StoreBuilder;
 import models.Supplier;
 import services.StoreService;
 import services.SupplierService;
@@ -24,8 +25,7 @@ public class ManageAccountDetails {
  
     @Given("The store owner is logged in")
     public void theStoreOwnerIsLoggedIn() {
-        loggedInStoreOwner = new Store("storeOwner123", "password", "store owner",
-                1, "Sweet Treats", 1234567890, "123 Candy Lane", 0);
+        loggedInStoreOwner = new StoreBuilder().setUsername("storeOwner123").setPassword("password").setRole("store owner").setId(1).setName("Sweet Treats").setPhone(1234567890).setAddress("123 Candy Lane").setSales(0).createStore();
         storeService.addStore(loggedInStoreOwner);
         assertNotNull("Store owner should be logged in.", loggedInStoreOwner);
     }

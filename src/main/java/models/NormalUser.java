@@ -1,6 +1,7 @@
 package models;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class NormalUser extends GeneralUser {
     private int id;
@@ -80,7 +81,7 @@ public class NormalUser extends GeneralUser {
     }
 
 
-    public LinkedList<String> getMessage() {
+    public List<String> getMessage() {
         return message;
     }
 

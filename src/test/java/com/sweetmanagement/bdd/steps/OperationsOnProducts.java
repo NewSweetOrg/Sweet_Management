@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import models.Products;
 import models.Store;
 
+import models.StoreBuilder;
 import services.NormalUserService;
 import services.ProductService;
 import services.StoreService;
@@ -24,14 +25,12 @@ public class OperationsOnProducts {
         this.userService = new NormalUserService();
         this.productService = new ProductService();
         this.storeService = new StoreService();
-        this.loggedInStoreOwner = new Store("storeOwner123", "password", "store owner",
-                1, "Sweet Treats", 1234567890, "123 Candy Lane", 0);
+        this.loggedInStoreOwner = new StoreBuilder().setUsername("storeOwner123").setPassword("password").setRole("store owner").setId(1).setName("Sweet Treats").setPhone(1234567890).setAddress("123 Candy Lane").setSales(0).createStore();
 
         storeService.addStore(loggedInStoreOwner);
         userService.signUp("storeOwner", "password", "store owner");
         if (userService.signIn("storeOwner", "password")) {
-            this.loggedInStoreOwner = new Store("storeOwner123", "password", "store owner",
-                    1, "Sweet Treats", 1234567890, "123 Candy Lane", 0);
+            this.loggedInStoreOwner = new StoreBuilder().setUsername("storeOwner123").setPassword("password").setRole("store owner").setId(1).setName("Sweet Treats").setPhone(1234567890).setAddress("123 Candy Lane").setSales(0).createStore();
         }
     }
 
