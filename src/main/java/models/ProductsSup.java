@@ -55,6 +55,14 @@ public class ProductsSup {
         this.price = price;
     }
 
+    public int getTotalSold() {
+        return totalSold;
+    }
+
+    public String getDietaryInfo() {
+        return dietaryInfo;
+    }
+
     public void setTotalSold(int totalSold) {
         this.totalSold = totalSold;
     }
