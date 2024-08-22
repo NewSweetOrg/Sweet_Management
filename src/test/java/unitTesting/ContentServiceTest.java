@@ -21,7 +21,6 @@ public class ContentServiceTest {
         // Arrange
         Content content = new Content("Article 1");
 
-        // Act
         contentService.addContent(content);
         Content retrievedContent = contentService.getContentByTitle("Article 1");
 
