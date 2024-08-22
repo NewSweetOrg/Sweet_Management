@@ -37,7 +37,6 @@ public class ContentServiceTest {
         contentService.addContent(content1);
         contentService.addContent(content2);
 
-        // Act
         Content retrievedContent = contentService.getContentByTitle("Article 2");
 
         // Assert
