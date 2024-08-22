@@ -26,8 +26,14 @@ public class Order {
         this.status = status;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         return "Order ID: " + id + ", Product: " + productName + ", Quantity: " + quantity + ", Status: " + status;
     }
+
+
 }

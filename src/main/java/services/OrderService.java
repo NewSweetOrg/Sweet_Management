@@ -10,6 +10,11 @@ public class OrderService {
     private static final Logger LOGGER = Logger.getLogger(OrderService.class.getName());
     private List<Order> orders = new ArrayList<>();
 
+    // Method to add an order
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
+
     public void updateOrderStatus(int orderId, String newStatus) {
         for (Order order : orders) {
             if (order.getId() == orderId) {
@@ -17,7 +22,6 @@ public class OrderService {
                 return;
             }
         }
-        // Replace System.out.println with a logger
         if (LOGGER.isLoggable(Level.WARNING)) {
             LOGGER.warning(String.format("Order with ID %d not found.", orderId));
         }
