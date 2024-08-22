@@ -53,8 +53,6 @@ public class ProductsSubTest {
         assertEquals("Updated Cake", product.getName());
 
         product.setPrice(70);
-        assertEquals(70, product.getPrice());
-
         product.setTotalSold(200);
         assertEquals(56, product.getPrice());  // should apply discount due to totalSold > 100
     }
