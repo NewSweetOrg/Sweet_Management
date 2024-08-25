@@ -34,13 +34,12 @@ public class ProductsSubTest {
 
     @Test
     public void testGetPriceWithDiscount() {
-        // totalSold is 120, so the price should be discounted by 20%
         assertEquals(40, product.getPrice());
     }
 
     @Test
     public void testGetPriceWithoutDiscount() {
-        product.setTotalSold(80);  // less than 100, no discount
+        product.setTotalSold(80);
         assertEquals(50, product.getPrice());
     }
 
@@ -54,7 +53,7 @@ public class ProductsSubTest {
 
         product.setPrice(70);
         product.setTotalSold(200);
-        assertEquals(56, product.getPrice());  // should apply discount due to totalSold > 100
+        assertEquals(56, product.getPrice());
     }
 
     @Test

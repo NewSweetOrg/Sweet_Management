@@ -53,7 +53,6 @@ public class ProductServiceSupTest {
 
     @Test
     public void testRemoveProduct() {
-        // Add a product to ensure it can be removed
         int id = productServiceSup.addProduct(new ProductsSup(0, 5, "Product To Remove", 100, 50, "gluten-free"));
 
         productServiceSup.removeProduct(id);
@@ -63,7 +62,6 @@ public class ProductServiceSupTest {
 
     @Test
     public void testPrintAllProducts_Sup() {
-        // For now, we'll just ensure that the method runs without throwing exceptions.
         productServiceSup.printAllProducts_Sup();
         assertTrue("Print method ran successfully.", true);
     }

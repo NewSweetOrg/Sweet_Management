@@ -1,3 +1,5 @@
+package unitTesting;
+
 import services.ProductService;
 import models.Products;
 import org.junit.Before;
@@ -15,15 +17,15 @@ public class ProductServiceTest {
 
     @Test
     public void testPrintAllProducts_EmptyList() {
-        productService.products.clear(); // Ensure the list is empty
+        productService.products.clear();
         productService.printAllProducts();
-        assertTrue("No products available.", true); // Just ensure the method runs
+        assertTrue("No products available.", true);
     }
 
     @Test
     public void testPrintAllProducts_WithProducts() {
         productService.printAllProducts();
-        assertTrue("Products are printed.", true); // Just ensure the method runs
+        assertTrue("Products are printed.", true);
     }
 
     @Test
@@ -35,7 +37,7 @@ public class ProductServiceTest {
 
     @Test
     public void testRemoveProduct_NotFound() {
-        productService.removeProduct(999); // ID that doesn't exist
+        productService.removeProduct(999);
         assertTrue("Product removal attempted on non-existent ID.", true);
     }
 
