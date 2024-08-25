@@ -17,18 +17,18 @@ public class PostFeedbackManagementSteps {
     public PostFeedbackManagementSteps() {
         this.posts = new ArrayList<>();
         this.feedback = new ArrayList<>();
-        this.isAdmin = false; // Assume user is not an admin initially
+        this.isAdmin = false;
     }
 
     @Given("I am logged in as an admin")
     public void i_am_logged_in_as_an_admin() {
-        isAdmin = true; // Set user as admin
+        isAdmin = true;
         System.out.println("Welcome Admin! You have access to manage posts and feedback.");
     }
 
     @Given("I am logged in as a regular user")
     public void i_am_logged_in_as_a_regular_user() {
-        isAdmin = false; // Set user as regular
+        isAdmin = false;
     }
 
     @Given("I have added a post with title {string}")
@@ -41,7 +41,7 @@ public class PostFeedbackManagementSteps {
 
     @When("I view the post list")
     public void i_view_the_post_list() {
-        // No action needed, we will check contents directly
+
     }
 
     @Then("I should see {string} in the post list")
@@ -58,7 +58,7 @@ public class PostFeedbackManagementSteps {
 
     @Then("the post should be deleted successfully")
     public void the_post_should_be_deleted_successfully() {
-        // No action needed here
+
     }
 
     @Then("I should not see {string} in the post list")
@@ -76,7 +76,7 @@ public class PostFeedbackManagementSteps {
 
     @When("I view the feedback list for {string}")
     public void i_view_the_feedback_list(String postTitle) {
-        // No action needed, we will check contents directly
+
     }
 
     @Then("I should see {string} in the feedback list")
@@ -93,7 +93,7 @@ public class PostFeedbackManagementSteps {
 
     @Then("the feedback should be deleted successfully")
     public void the_feedback_should_be_deleted_successfully() {
-        // No action needed here
+
     }
 
     @Then("I should not see {string} in the feedback list")

@@ -35,14 +35,11 @@ public class ProductServiceSupTest {
 
     @Test
     public void testUpdateProduct() {
-        // Use a unique ID to avoid conflicts with other tests
         int uniqueId = productServiceSup.addProduct(new ProductsSup(0, 4, "Original Cake", 100, 50, "sugar-free"));
 
-        // Update the product
         ProductsSup updatedProduct = new ProductsSup(uniqueId, 4, "Updated Cake", 150, 80, "gluten-free");
         productServiceSup.updateProduct(uniqueId, updatedProduct);
 
-        // Retrieve the updated product and verify the changes
         ProductsSup retrievedProduct = productServiceSup.getProductById(uniqueId);
         assertNotNull("Retrieved product should not be null", retrievedProduct);
         assertEquals("Updated Cake", retrievedProduct.getName());
@@ -62,7 +59,7 @@ public class ProductServiceSupTest {
 
     @Test
     public void testPrintAllProducts_Sup() {
-        productServiceSup.printAllProducts_Sup();
+        productServiceSup.printAllProductsSup();
         assertTrue("Print method ran successfully.", true);
     }
 }

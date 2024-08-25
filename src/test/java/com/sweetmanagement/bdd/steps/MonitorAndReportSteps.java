@@ -25,11 +25,11 @@ public class MonitorAndReportSteps {
         Store store1 = new StoreBuilder().setUsername("user1").setPassword("pass1").setRole("admin").setId(1).setName("Store1").setPhone(1234567890).setAddress("Address1").setSales(100).createStore();
         Store store2= new StoreBuilder().setUsername("user2").setPassword("pass1").setRole("admin").setId(1).setName("Store1").setPhone(1234567890).setAddress("Address1").setSales(100).createStore();
         
-        Products productA = new Products(1, 1, "ProductA", 10, 50,""); // Example sales
-        Products productC = new Products(2, 2, "ProductB", 20, 70,""); // Example sales
+        Products productA = new Products(1, 1, "ProductA", 10, 50,"");
+        Products productC = new Products(2, 2, "ProductB", 20, 70,"");
 
-        store1.addProduct(productA); // Add product object
-        store2.addProduct(productC); // Add product object
+        store1.addProduct(productA);
+        store2.addProduct(productC);
 
         storeService.addStore(store1);
         storeService.addStore(store2);
@@ -48,7 +48,7 @@ public class MonitorAndReportSteps {
     @Then("the report should include the total profits")
     public void the_report_should_include_the_total_profits() {
         assertTrue(financialReport.containsKey("totalProfits"));
-        assertEquals(30.0, financialReport.get("totalProfits")); // Adjust based on actual logic
+        assertEquals(30.0, financialReport.get("totalProfits"));
     }
 
     @When("the admin requests a report on best-selling products")

@@ -13,8 +13,7 @@ public class UserManagementSteps {
 
     @Given("an admin")
     public void an_admin() {
-        // Assuming this step is setting up the admin context
-        // Add any necessary admin-related setup here
+
     }
 
     @Given("a new user with username {string} and password {string} and role {string}")

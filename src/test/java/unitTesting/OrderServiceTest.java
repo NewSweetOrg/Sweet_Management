@@ -35,12 +35,12 @@ public class OrderServiceTest {
 
         orderService.updateOrderStatus(999, "Shipped");
 
-        assertEquals("Pending", order1.getStatus()); // Order 999 doesn't exist, so no changes
+        assertEquals("Pending", order1.getStatus());
     }
 
     @Test
     public void testGetAllOrders() {
-        // Arrange
+
         Order order1 = new Order(1, "Product A", 2, "Pending");
         Order order2 = new Order(2, "Product B", 5, "Pending");
         orderService.addOrder(order1);
@@ -48,7 +48,7 @@ public class OrderServiceTest {
 
         List<Order> orders = orderService.getAllOrders();
 
-        // Assert
+
         assertEquals(2, orders.size());
         assertTrue(orders.contains(order1));
         assertTrue(orders.contains(order2));

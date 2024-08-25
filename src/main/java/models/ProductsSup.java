@@ -11,7 +11,6 @@ public class ProductsSup {
     private LinkedList<String> feedback;
     private String dietaryInfo;
 
-    // Constructor with all fields
     public ProductsSup(int id, int storeOrSupplierId, String name, int price, int totalSold, String dietaryInfo) {
         this.id = id;
         this.storeOrSupplierId = storeOrSupplierId;
@@ -22,12 +21,10 @@ public class ProductsSup {
         this.feedback = new LinkedList<>();
     }
 
-    // Overloaded constructor with essential fields
     public ProductsSup(int id, String name, int price, int totalSold) {
         this(id, 0, name, price, totalSold, ""); // Using another constructor
     }
 
-    // Getters and Setters
     public int getId() {
         return id;
     }

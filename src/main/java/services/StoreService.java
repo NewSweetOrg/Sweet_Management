@@ -31,7 +31,7 @@ public class StoreService {
     }
 
     public List<Store> getAllStores() {
-        return stores; // Return the list of stores directly
+        return stores;
     }
 
     public int addSaleToStore() {

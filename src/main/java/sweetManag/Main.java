@@ -71,14 +71,13 @@ public class Main {
         LOGGER.addHandler(handler);
 
         while (true) {
-            // Step 1: Choose to log in or create an account
             LOGGER.info("Welcome to the Sweet Management System!");
             LOGGER.info("1. Log in");
             LOGGER.info("2. Create an account");
             LOGGER.info("3. Exit");
             LOGGER.info("Choose an option (1, 2, or 3): ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             if (choice == 3) {
                 LOGGER.info("Thank you for using the Sweet Management System. Goodbye!");
@@ -86,7 +85,7 @@ public class Main {
             }
 
             if (choice == 2) {
-                // Step 2: Account Creation
+
                 LOGGER.info("Create an account:");
 
                 LOGGER.info("Enter your name: ");
@@ -108,7 +107,7 @@ public class Main {
                 LOGGER.info("4. NormalUser");
                 LOGGER.info("Enter the number corresponding to your role: ");
                 int roleChoice = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine();
 
                 String role = "";
                 switch (roleChoice) {
@@ -135,7 +134,6 @@ public class Main {
             }
 
             if (choice == 1 || choice == 2) {
-                // Step 3: Login
                 boolean loginSuccess = false;
 
                 while (!loginSuccess) {
@@ -153,7 +151,7 @@ public class Main {
                     LOGGER.info("4. NormalUser");
                     LOGGER.info("Enter the number corresponding to your role: ");
                     int loginRoleChoice = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
+                    scanner.nextLine();
 
                     String loginRole = "";
                     switch (loginRoleChoice) {
@@ -174,14 +172,13 @@ public class Main {
                             continue;
                     }
 
-                    // Verify login details
+
                     for (NormalUser u : userList) {
                         if (loginName.equals(u.getName()) && loginPassword.equals(u.getPassword()) && loginRole.equals(u.getRole())) {
                             loginSuccess = true;
-                            user = u; // Set the current user
+                            user = u;
                             LOGGER.info("Login successful!");
 
-                            // Direct the user based on their role
                             switch (loginRole.toLowerCase()) {
                                 case "admin":
                                     adminDashboard();
@@ -199,7 +196,7 @@ public class Main {
                                     LOGGER.warning("Invalid role");
                                     break;
                             }
-                            break; // Exit the for loop once a match is found
+                            break;
                         }
                     }
 
@@ -230,7 +227,7 @@ public class Main {
             LOGGER.info(CHOOSE_OPTION_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -272,7 +269,7 @@ public class Main {
             LOGGER.info(CHOOSE_OPTION_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -324,7 +321,7 @@ public class Main {
 
         LOGGER.info("Select role (1. Admin, 2. StoreOwner, 3. Supplier, 4. NormalUser): ");
         int roleChoice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         String role = "";
         switch (roleChoice) {
@@ -354,8 +351,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         LOGGER.info("Enter the ID of the user to update: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
-
+        scanner.nextLine();
         NormalUser userToUpdate = null;
         for (NormalUser user : userList) {
             if (user.getId() == id) {
@@ -396,7 +392,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         LOGGER.info("Enter the ID of the user to delete: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         NormalUser userToDelete = null;
         for (NormalUser user : userList) {
@@ -418,7 +414,7 @@ public class Main {
     private static void generateFinancialReports() {
         LOGGER.info("Financial Reports");
 
-        // Report for Stores
+
         LOGGER.info("Store Reports:");
         for (Store store : storeList) {
             double totalSales = 0;
@@ -437,7 +433,6 @@ public class Main {
             LOGGER.info(SEPARATOR_LINE);
         }
 
-        // Report for Suppliers
         LOGGER.info("Supplier Reports:");
         for (Supplier supplier : supplierList) {
             double totalSales = 0;
@@ -457,10 +452,9 @@ public class Main {
     private static void viewBestSellingProducts() {
         LOGGER.info("Best-Selling Products");
 
-        // Sort products by total sold
+
         Collections.sort(productList, (p1, p2) -> Integer.compare(p2.getTotalSold(), p1.getTotalSold()));
 
-        // Display top 5 best-selling products
         LOGGER.info("Top 5 Best-Selling Products:");
         for (int i = 0; i < Math.min(5, productList.size()); i++) {
             Products product = productList.get(i);
@@ -499,7 +493,7 @@ public class Main {
             LOGGER.info(CHOOSE_OPTION_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -519,7 +513,7 @@ public class Main {
 
     private static void manageStorePosts() {
         Scanner scanner = new Scanner(System.in);
-        PostService postService = new PostService(); // Assuming you have a PostService instance
+        PostService postService = new PostService();
 
         boolean exit = false;
         while (!exit) {
@@ -533,7 +527,7 @@ public class Main {
             LOGGER.info(CHOOSE_OPTION_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -565,8 +559,8 @@ public class Main {
         LOGGER.info("Enter post description: ");
         String description = scanner.nextLine();
 
-        int id = postService.getPosts().size() + 1; // Generate a new ID based on the number of existing posts
-        Posts newPost = new Posts(id, 0, title, tag, description); // Set normalUserId as 0 or adjust accordingly
+        int id = postService.getPosts().size() + 1;
+        Posts newPost = new Posts(id, 0, title, tag, description);
         postService.addPost(newPost);
 
         LOGGER.info("Post added successfully.");
@@ -575,7 +569,7 @@ public class Main {
     private static void deletePost(Scanner scanner, PostService postService) {
         LOGGER.info("Enter the ID of the post to delete: ");
         int postId = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         List<Posts> posts = postService.getPosts();
         boolean postFound = false;
@@ -602,18 +596,13 @@ public class Main {
             }
             LOGGER.info("1. Keep  2. Remove");
             int action = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
             if (action == 2) {
                 feedbackList.remove(feedback);
                 LOGGER.info("Feedback removed.");
             }
         }
     }
-
-
-    ///////////////////////////////
-    ///////////////////////////////
-    ////////////////////////////
 
     public static void storeOwnerDashboard() {
         Scanner scanner = new Scanner(System.in);
@@ -634,7 +623,7 @@ public class Main {
             LOGGER.info("8. Log Out");
             LOGGER.info(ENTER_CHOICE_MESSAGE);
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -670,7 +659,7 @@ public class Main {
         }
     }
 
-    // Method to create a post
+
     private static void createPost(PostService postService, NormalUser user) {
         Scanner scanner = new Scanner(System.in);
 
@@ -689,9 +678,9 @@ public class Main {
         LOGGER.info("Post created successfully!");
     }
 
-    /////////////////////////////////////
 
-    //////// Suplier ///////////////
+
+
     public static void supplierDashboard() {
         Scanner scanner = new Scanner(System.in);
         boolean logout = false;
@@ -707,7 +696,7 @@ public class Main {
             LOGGER.info("5. Log Out");
             LOGGER.info(ENTER_CHOICE_MESSAGE);
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -733,8 +722,7 @@ public class Main {
             }
         }
     }
-    ///////////////////////////////////////////
-    ////////////////////////////////
+
 
     public static void normalUserDashboard(NormalUser user) {
         Scanner scanner = new Scanner(System.in);
@@ -752,7 +740,7 @@ public class Main {
             LOGGER.info("5. Log Out");
             LOGGER.info(ENTER_CHOICE_MESSAGE);
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -817,7 +805,7 @@ public class Main {
             LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -829,9 +817,9 @@ public class Main {
                     int totalSold = scanner.nextInt();
                     LOGGER.info("Enter the dietary Info : ");
                     String dietaryInfo = scanner.nextLine();
-                    scanner.nextLine();// Consume newline
+                    scanner.nextLine();
 
-                    // Assume storeId is 1 for this example
+
                     int storeId = 1;
                     Products product = new Products(0, storeId, name, price, totalSold, dietaryInfo);
                     productService.addProduct(product);
@@ -842,7 +830,7 @@ public class Main {
                 case 2:
                     LOGGER.info("Enter product ID to update: ");
                     int id = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
+                    scanner.nextLine();
 
                     Products existingProduct = productService.getProductById(id);
                     if (existingProduct == null) {
@@ -873,7 +861,7 @@ public class Main {
                 case 3:
                     LOGGER.info("Enter product ID to remove: ");
                     int removeId = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
+                    scanner.nextLine();
 
                     productService.removeProduct(removeId);
                     LOGGER.info("Product removed.");
@@ -913,7 +901,7 @@ public class Main {
             LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -925,7 +913,7 @@ public class Main {
                     int totalSold = scanner.nextInt();
                     scanner.nextLine();
 
-                    // Assume storeId is 1 for this example
+
 
                     ProductsSup product = new ProductsSup(0, name, price, totalSold);
                     ProductServiceSup.addProduct(product);
@@ -936,8 +924,7 @@ public class Main {
                 case 2:
                     LOGGER.info("Enter product number to update: ");
                     int id = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
-
+                    scanner.nextLine();
                     ProductsSup existingProduct = ProductServiceSup.getProductById(id);
                     if (existingProduct == null) {
                         LOGGER.warning(PRODUCT_NOT_FOUND_MESSAGE);
@@ -963,7 +950,7 @@ public class Main {
                 case 3:
                     LOGGER.info("Enter product ID to remove: ");
                     int removeId = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
+                    scanner.nextLine();
 
                     ProductServiceSup.removeProduct(removeId);
                     LOGGER.info("Product removed.");
@@ -971,7 +958,7 @@ public class Main {
 
                 case 4:
                     LOGGER.info("All Products:");
-                    ProductServiceSup.printAllProducts_Sup();
+                    ProductServiceSup.printAllProductsSup();
                     break;
 
                 case 5:
@@ -986,7 +973,7 @@ public class Main {
         scanner.close();
     }
 
-    // Admin specific functionalities
+
     public static void manageUsers() {
         LOGGER.info("Implementing manageUsers() functionality...");
     }
@@ -999,20 +986,20 @@ public class Main {
         LOGGER.info("Implementing manageContent() functionality...");
     }
 
-    // Store Owner specific functionalities
+
     public static void monitorSalesAndProfits() {
         LOGGER.info(SEPARATOR);
         LOGGER.info("   Monitor Sales and Profits");
         LOGGER.info(SEPARATOR);
 
-        // Calculate total sales and profits
+
         List<Products> allProducts = productService.products;
         int totalSales = 0;
         int totalProfit = 0;
 
         for (Products product : allProducts) {
             int productSales = product.getPrice() * product.getTotalSold();
-            int productProfit = (int) (product.getPrice() - (product.getPrice() * (product.getTotalSold() > 100 ? 0.20 : 0))); // Assuming a 20% discount for products sold over 100 units
+            int productProfit = (int) (product.getPrice() - (product.getPrice() * (product.getTotalSold() > 100 ? 0.20 : 0)));
 
             totalSales += productSales;
             totalProfit += productProfit * product.getTotalSold();
@@ -1033,7 +1020,7 @@ public class Main {
 
     public static void manageOrders() {
         Scanner scanner = new Scanner(System.in);
-        OrderService orderService = new OrderService(); // Assume this is initialized and used properly
+        OrderService orderService = new OrderService();
 
         boolean running = true;
 
@@ -1048,7 +1035,7 @@ public class Main {
             LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -1067,7 +1054,7 @@ public class Main {
                 case 2:
                     LOGGER.info("Enter the order ID to update: ");
                     int orderId = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
+                    scanner.nextLine();
 
                     LOGGER.info("Enter the new status (e.g., 'Pending', 'Shipped', 'Delivered'): ");
                     String newStatus = scanner.nextLine();
@@ -1089,8 +1076,8 @@ public class Main {
 
     public static void communicateWithUsersAndSuppliers() {
         Scanner scanner = new Scanner(System.in);
-        UserService userService = new UserService(); // Assuming you have an instance of UserService
-        SupplierService supplierService = new SupplierService(); // Assuming you have an instance of SupplierService
+        UserService userService = new UserService();
+        SupplierService supplierService = new SupplierService();
 
         boolean exit = false;
 
@@ -1106,7 +1093,7 @@ public class Main {
             LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -1130,13 +1117,13 @@ public class Main {
     }
 
     private static void sendMessageToNormalUser() {
-        // Implementation here...
+
     }
 
     private static void sendMessageToSupplier(Scanner scanner, SupplierService supplierService) {
         LOGGER.info(ENTER_SUPPLIER_ID_MESSAGE);
         int id = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
         Supplier supplier = supplierService.getSupplierById(id);
 
         if (supplier != null) {
@@ -1154,7 +1141,7 @@ public class Main {
     private static void sendMessageToOwner(Scanner scanner) {
         LOGGER.info("Enter the ID of the Owner: ");
         int id = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
         Store supplie = StoreService.getStoreById(id);
 
         if (supplie != null) {
@@ -1176,7 +1163,7 @@ public class Main {
         LOGGER.info(ENTER_CHOICE_MESSAGE);
 
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         switch (choice) {
             case 1:
@@ -1200,7 +1187,7 @@ public class Main {
             case 2:
                 LOGGER.info(ENTER_SUPPLIER_ID_MESSAGE);
                 int id = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine();
                 Supplier supplier = supplierService.getSupplierById(id);
 
                 if (supplier != null) {
@@ -1228,7 +1215,7 @@ public class Main {
         LOGGER.info(ENTER_CHOICE_MESSAGE);
 
         int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         switch (choice) {
             case 1:
@@ -1251,7 +1238,7 @@ public class Main {
             case 2:
                 LOGGER.info(ENTER_SUPPLIER_ID_MESSAGE);
                 int id = scanner.nextInt();
-                scanner.nextLine(); // Consume newline
+                scanner.nextLine();
                 Store supplier = supplierService.getStoreById(id);
 
                 if (supplier != null) {
@@ -1287,7 +1274,7 @@ public class Main {
             LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -1310,11 +1297,11 @@ public class Main {
     }
 
     private static void viewAccountInformation() {
-        // Assuming `user` is a class variable holding the logged-in user's information
+
         if (user != null) {
             LOGGER.info("Account Information:");
             LOGGER.info("Name: " + user.getName());
-            LOGGER.info("Password: " + user.getPassword()); // You might want to mask this
+            LOGGER.info("Password: " + user.getPassword());
             LOGGER.info(CITY + user.getCity());
             LOGGER.info("Phone Number: " + user.getPhone());
             LOGGER.info("Role: " + user.getRole());
@@ -1359,11 +1346,10 @@ public class Main {
         }
     }
 
-    // Supplier specific functionalities
     public static void communicateWithUsersAndStoreOwners() {
         Scanner scanner = new Scanner(System.in);
-        UserService userService = new UserService(); // Assuming you have an instance of UserService
-        StoreService supplierService = new StoreService(); // Assuming you have an instance of SupplierService
+        UserService userService = new UserService();
+        StoreService supplierService = new StoreService();
 
         boolean exit = false;
 
@@ -1379,7 +1365,7 @@ public class Main {
             LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -1402,7 +1388,7 @@ public class Main {
         }
     }
 
-    // Normal User specific functionalities
+
     public static void manageAccount(NormalUser user) {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -1414,11 +1400,11 @@ public class Main {
             LOGGER.info(CHOOSE_OPTION_MESSAGE);
             LOGGER.info("1. View Account Information");
             LOGGER.info("2. Update Account Information");
-            LOGGER.info("3. Back to User Dashboard"); // Updated option
+            LOGGER.info("3. Back to User Dashboard");
             LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -1428,7 +1414,7 @@ public class Main {
                     updateAccountInformation(user);
                     break;
                 case 3:
-                    running = false; // Return to User Dashboard
+                    running = false;
                     normalUserDashboard(user);
                     break;
                 default:
@@ -1441,7 +1427,7 @@ public class Main {
     private static void viewAccountInformation(NormalUser user) {
         LOGGER.info("Account Information:");
         LOGGER.info("Name: " + user.getName());
-        LOGGER.info("Password: " + user.getPassword()); // You might want to mask this
+        LOGGER.info("Password: " + user.getPassword());
         LOGGER.info(CITY + user.getCity());
         LOGGER.info("Phone Number: " + user.getPhone());
         LOGGER.info("Role: " + user.getRole());
@@ -1496,40 +1482,35 @@ public class Main {
             LOGGER.info("5. Go back to the User Dashboard");
             LOGGER.info(ENTER_CHOICE_MESSAGE);
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
-                    // Browse all dessert recipes
                     productService.printAllProducts();
                     break;
 
                 case 2:
-                    // Search for a dessert recipe
                     LOGGER.info("Enter the name of the dessert you want to search for: ");
                     String searchQuery = scanner.nextLine();
                     productService.searchProductsByName(searchQuery);
                     break;
 
                 case 3:
-                    // Filter recipes by dietary needs or allergies
                     LOGGER.info("Enter the dietary need or allergy to filter by (e.g., gluten-free, nut-free): ");
                     String filter = scanner.nextLine();
                     productService.filterProductsByDietaryNeeds(filter);
                     break;
 
                 case 4:
-                    // Purchase desserts
                     LOGGER.info("Enter the number of the dessert you want to purchase: ");
                     int productId = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline left-over
+                    scanner.nextLine();
                     fID = productId;
                     Products product = productService.getProductById(productId);
 
                     if (product != null) {
                         int price = product.getPrice();
 
-                        // Apply discounts based on price
                         if (price > 100 && price < 149) {
                             price *= 0.90;
                             LOGGER.info("A 10% discount has been applied!");
@@ -1545,7 +1526,6 @@ public class Main {
                         LOGGER.info(String.format("Purchased %s for $%d", product.getName(), price));
                         }
 
-                        // Send email notification
                         String recipient = "amer23102002@gmail.com";
                         String subject = "Purchase Confirmation";
                         String content = "Thank you for your purchase!\n\nProduct: " + product.getName() +
@@ -1579,7 +1559,6 @@ public class Main {
     }
 
 
-    //////////////////
 
 
     public static void communicationCenter(NormalUser currentUser) {
@@ -1596,7 +1575,7 @@ public class Main {
             LOGGER.info(ENTER_CHOICE_MESSAGE);
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -1622,14 +1601,13 @@ public class Main {
         LOGGER.info("3. StoreOwner");
         LOGGER.info(ENTER_CHOICE_MESSAGE);
         scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         LOGGER.info("Enter recipient name:");
         String recipientIdentifier = scanner.nextLine();
 
         NormalUser recipient = null;
 
-        // Search for the recipient in the allUsers list by name
         for (NormalUser user : NormalUser.getAllUsers()) {
             if (user.getName().equalsIgnoreCase(recipientIdentifier)) {
                 recipient = user;
@@ -1699,13 +1677,13 @@ public class Main {
         }
     }
 
-    /////////////////////////////
+
 
     public static void viewProductFeedback() {
         Scanner scanner = new Scanner(System.in);
         LOGGER.info("Enter the product number to view feedback: ");
         int productId = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        scanner.nextLine();
 
         boolean feedbackFound = false;
         for (Feedback feedback : feedbackList) {

@@ -4,7 +4,7 @@ public class Order {
     private int id;
     private String productName;
     private int quantity;
-    private String status; // e.g., "Pending", "Shipped", "Delivered"
+    private String status;
 
     public Order(int id, String productName, int quantity, String status) {
         this.id = id;

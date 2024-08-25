@@ -25,7 +25,7 @@ public class SupplierService {
         Supplier supplier = getSupplierById(id);
         if (supplier != null) {
             supplier.setName(name);
-            supplier.setPhone(Integer.parseInt(number)); // Assuming phone number is stored as an int
+            supplier.setPhone(Integer.parseInt(number));
             supplier.setAddress(address);
         }
     }

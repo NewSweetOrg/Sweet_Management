@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class ProductService {
     private static final Logger LOGGER = Logger.getLogger(ProductService.class.getName());
     public List<Products> products = new LinkedList<>();
-    private int nextId = 1; // To generate unique product IDs
+    private int nextId = 1;
 
     public ProductService() {
         // Add three products to the list
@@ -19,9 +19,9 @@ public class ProductService {
     }
 
     public int addProduct(Products product) {
-        product.setId(nextId++); // Set the product ID and increment for next product
+        product.setId(nextId++);
         products.add(product);
-        return product.getId(); // Return the newly assigned ID
+        return product.getId();
     }
 
     public Products getProductById(int id) {
@@ -56,7 +56,7 @@ public class ProductService {
         } else {
             for (Products product : products) {
                 if (LOGGER.isLoggable(Level.INFO)) {
-                    LOGGER.info(product.toString()); // Assuming the Products class has a meaningful toString() method
+                    LOGGER.info(product.toString());
                 }
             }
         }
@@ -118,7 +118,6 @@ public class ProductService {
     }
 
     public List<Products> getProductsFromStores(StoreService storeService) {
-        // Return an empty list instead of null
         return new ArrayList<>();
     }
 }

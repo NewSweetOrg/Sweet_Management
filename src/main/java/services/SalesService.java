@@ -5,7 +5,7 @@ import models.Products;
 import java.util.List;
 
 public class SalesService {
-    private List<Products> products; // Assumes this list is populated elsewhere in your application
+    private List<Products> products;
 
     public SalesService(List<Products> products) {
         this.products = products;

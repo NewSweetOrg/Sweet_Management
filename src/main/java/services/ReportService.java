@@ -11,13 +11,13 @@ import java.util.Map;
 
 public class ReportService {
 
-    // Generates a financial report summarizing the total and average profits across all stores
+
     public Map<String, Object> generateFinancialReport(List<Store> stores) {
         Map<String, Object> report = new HashMap<>();
         double totalProfits = 0.0;
 
         for (Store store : stores) {
-            totalProfits += store.calculateTotalProfits();  // Calculating the total profits for each store
+            totalProfits += store.calculateTotalProfits();
         }
 
         report.put("totalStores", stores.size());
@@ -27,19 +27,17 @@ public class ReportService {
         return report;
     }
 
-    // Generates a report listing the best-selling products for each store
-    public Map<String, List<Products>> generateBestSellingProductsReport() {
-        Map<String, List<Products>> bestSellingProductsReport = new HashMap<>();
 
-        return bestSellingProductsReport;
+    public Map<String, List<Products>> generateBestSellingProductsReport() {
+        return new HashMap<>();
     }
 
-    // Generates a report on the number of users registered in each city
+
     public Map<String, Integer> generateUserStatisticsByCity(Collection<NormalUser> allUsers) {
         Map<String, Integer> cityUserCount = new HashMap<>();
 
         for (NormalUser user : allUsers) {
-            String city = user.getCity();  // Assuming User class has a getCity() method
+            String city = user.getCity();
             cityUserCount.put(city, cityUserCount.getOrDefault(city, 0) + 1);
         }
 

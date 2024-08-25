@@ -12,7 +12,7 @@ public class UserService {
     public void addNormalUser(NormalUser normalUser) {
         String city = normalUser.getCity();
         usersByCity.putIfAbsent(city, new HashMap<>());
-        usersByCity.get(city).put(normalUser.getUsername(), normalUser); // Use getUsername()
+        usersByCity.get(city).put(normalUser.getUsername(), normalUser);
     }
 
     public void deleteNormalUser(String normalUsername) {

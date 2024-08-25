@@ -23,7 +23,7 @@ public class MessagingFeature {
 
     @Given("a user is logged in")
     public void aUserIsLoggedIn() {
-        loggedInUser = "user123"; // Simulate a user logging in
+        loggedInUser = "user123";
         assertNotNull("User should be logged in.", loggedInUser);
     }
 
@@ -41,7 +41,7 @@ public class MessagingFeature {
 
     @When("the user sends a message to the supplier with content {string}")
     public void theUserSendsAMessageToTheSupplierWithContent(String message) {
-        this.message = message; // The message content
+        this.message = message;
         messagingService.sendMessageToSupplier(loggedInUser, availableSupplier, message);
     }
 

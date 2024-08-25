@@ -52,7 +52,6 @@ public class OperationsOnProducts {
         assertNotNull("Product should be added successfully.", addedProduct);
     }
 
- 
     @Given("the product with id {string} exists")
     public void theProductWithIdExists(String productId) {
         int id = Integer.parseInt(productId);
@@ -64,10 +63,6 @@ public class OperationsOnProducts {
         assertNotNull("Product with ID " + productId + " should exist.", product);
     }
 
- 
-
-    
-    
     @When("the store owner  updates the product with ID {string}")
     public void theStoreOwnerUpdatesTheProductWithID(String productId) {
         int id = Integer.parseInt(productId);
@@ -75,8 +70,6 @@ public class OperationsOnProducts {
         productService.updateProduct(id, updatedProduct);
     }
 
-    
-    
     @Then("the product should be updated successfully")
     public void theProductShouldBeUpdatedSuccessfully() {
         Products updatedProduct = productService.getProductById(1); // Use the correct product ID
